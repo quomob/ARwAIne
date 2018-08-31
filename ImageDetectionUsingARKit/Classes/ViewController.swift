@@ -108,8 +108,36 @@ extension ViewController: ARSCNViewDelegate {
             
             //アニメーション実行
             imageHightingAnimationNode.runAction(imageHighlightAction) {
+                
+                // InfoのSpriteKitのシーンを生成。用意されているAboutのシーンを利用
+                let infoSpriteKitScene = SKScene(fileNamed: "sakeInfo")
+                
+                infoSpriteKitScene?.isPaused = false
+                //ここでAbout用の平面生成。サイズはリファレンスイメージよりちょっと大きめ
+                let infoPlane = SCNPlane(width: CGFloat(imageSize.width * 1.5), height: CGFloat(imageSize.height * 1.2))
+                //テスクチャーとしてAboutシーンを設定
+                infoPlane.firstMaterial?.diffuse.contents = infoSpriteKitScene
+                //テクスチャーのサイズ調整
+                infoPlane.firstMaterial?.diffuse.contentsTransform = SCNMatrix4Translate(SCNMatrix4MakeScale(1, -1, 1), 0, 1, 0)
+                //About用ノード生成
+                let infoUsNode = SCNNode(geometry: infoPlane)
+                //trueにすると表面のみ表示する
+                infoUsNode.geometry?.firstMaterial?.isDoubleSided = true
+                //またオイラー角で回転
+                infoUsNode.eulerAngles.x = -.pi / 2
+                //原点を設定
+                infoUsNode.position = SCNVector3Zero
+                //Aboutノードをシーンノードのチャイルドノードに追加
+                node.addChildNode(infoUsNode)
+                //アクション開始
+                //アクションを設定。byは現在位置から指定分だけ移動に使用。
+                //0.8秒でX軸方向に。0.25m移動する
+                let move1Action = SCNAction.move(by: SCNVector3(-0.28, 0, 0), duration: 0.8)
+                
+                infoUsNode.runAction(move1Action, completionHandler: {
+                    
                 // AboutのSpriteKitのシーンを生成。用意されているAboutのシーンを利用
-                let aboutSpriteKitScene = SKScene(fileNamed: "About")
+                let aboutSpriteKitScene = SKScene(fileNamed: "Detail")
                 
                 aboutSpriteKitScene?.isPaused = false
                 //ここでAbout用の平面生成。サイズはリファレンスイメージよりちょっと大きめ
@@ -131,9 +159,11 @@ extension ViewController: ARSCNViewDelegate {
                 //アクション開始
                 //アクションを設定。byは現在位置から指定分だけ移動に使用。
                 //0.8秒でX軸方向に。0.25m移動する
-                let moveAction = SCNAction.move(by: SCNVector3(0.25, 0, 0), duration: 0.8)
+                let moveAction = SCNAction.move(by: SCNVector3(0.28, 0, 0), duration: 0.8)
                 //Aboutノードにアクションを設定して実行
+                
                 aboutUsNode.runAction(moveAction, completionHandler: {
+                    /*
                     //タイトルノード生成
                     let titleNode = aboutSpriteKitScene?.childNode(withName: "TitleNode")
                     //タイトルノードを1秒でy座標だけ90へ移動。toはその座標へ移動する。
@@ -179,7 +209,9 @@ extension ViewController: ARSCNViewDelegate {
                         })
                         
                     })
-                })
+*/
+ })
+                     })
             }
         } else {
             print("Error: Failed to get ARImageAnchor")
