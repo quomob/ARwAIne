@@ -163,55 +163,8 @@ extension ViewController: ARSCNViewDelegate {
                 //Aboutノードにアクションを設定して実行
                 
                 aboutUsNode.runAction(moveAction, completionHandler: {
-                    /*
-                    //タイトルノード生成
-                    let titleNode = aboutSpriteKitScene?.childNode(withName: "TitleNode")
-                    //タイトルノードを1秒でy座標だけ90へ移動。toはその座標へ移動する。
-                    //ここでやっているのは用意されたシーンファイル(About.sks)において
-                    //中心のメインノードの座標(0,0,0)に対して移動したいノードの中心点を
-                    //該当座標(0,90,0)に移動している。
-                    titleNode?.run(SKAction.moveTo(y: 90, duration: 1.0))
-                    //内容ノードの生成
-                    let name = aboutSpriteKitScene?.childNode(withName: "DescriptionNode")
-                    //内容ノードを1秒でy座標だけ−30へ移動(0,−30,0)。
-                    name?.run(SKAction.moveTo(y: -30, duration: 1.0))
-                    
-                    // What We Do 以下のコメントは上記のAboutと同様なので省略
-                    let whatWeDoSpriteKitScene = SKScene(fileNamed: "WhatWeDo")
-                    whatWeDoSpriteKitScene?.isPaused = false
-                    
-                    let whatWeDoPlane = SCNPlane(width: CGFloat(imageSize.width * 1.5), height: CGFloat(imageSize.height * 1.2))
-                    whatWeDoPlane.firstMaterial?.diffuse.contents = whatWeDoSpriteKitScene
-                    whatWeDoPlane.firstMaterial?.diffuse.contentsTransform = SCNMatrix4Translate(SCNMatrix4MakeScale(1, -1, 1), 0, 1, 0)
-                    
-                    let whatWeDoNode = SCNNode(geometry: whatWeDoPlane)
-                    whatWeDoNode.geometry?.firstMaterial?.isDoubleSided = true
-                    whatWeDoNode.eulerAngles.x = -.pi / 2
-                    whatWeDoNode.position = SCNVector3Zero
-                    node.addChildNode(whatWeDoNode)
-                    
-                    let move1Action = SCNAction.move(by: SCNVector3(-0.25, 0, 0), duration: 0.8)
-                    whatWeDoNode.runAction(move1Action, completionHandler: {
-                        let titleNode = whatWeDoSpriteKitScene?.childNode(withName: "TitleNode")
-                        
-                        let dept1 = whatWeDoSpriteKitScene?.childNode(withName: "Dept1Node")
-                        dept1?.run(SKAction.fadeOut(withDuration: 0.0))
-                        
-                        let dept2 = whatWeDoSpriteKitScene?.childNode(withName: "Dept2Node")
-                        dept2?.run(SKAction.fadeOut(withDuration: 0.0))
-
-                        titleNode?.run(SKAction.moveTo(x: 0, duration: 1.0), completion: {
-                            dept1?.run(SKAction.moveTo(y: 30, duration: 0.8))
-                            dept1?.run(SKAction.fadeIn(withDuration: 1.0), completion: {
-                                dept2?.run(SKAction.moveTo(y: -80, duration: 0.8))
-                                dept2?.run(SKAction.fadeIn(withDuration: 1.0))
-                            })
-                        })
-                        
-                    })
-*/
- })
-                     })
+                })
+            })
             }
         } else {
             print("Error: Failed to get ARImageAnchor")
