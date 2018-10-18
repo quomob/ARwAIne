@@ -15,6 +15,9 @@
 		03469AD920E0C0A600A949BD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03469AD720E0C0A600A949BD /* LaunchScreen.storyboard */; };
 		03D7EB0220EA51AF00221A8B /* About.sks in Resources */ = {isa = PBXBuildFile; fileRef = 03D7EB0120EA51AF00221A8B /* About.sks */; };
 		03D7EB0420EA5A6200221A8B /* WhatWeDo.sks in Resources */ = {isa = PBXBuildFile; fileRef = 03D7EB0320EA5A6200221A8B /* WhatWeDo.sks */; };
+		897100E9217880EB00A0BC84 /* wineInfo01.png in Resources */ = {isa = PBXBuildFile; fileRef = 897100E7217880EB00A0BC84 /* wineInfo01.png */; };
+		897100EA217880EB00A0BC84 /* wineInfo02.png in Resources */ = {isa = PBXBuildFile; fileRef = 897100E8217880EB00A0BC84 /* wineInfo02.png */; };
+		89D62902217887270098B02B /* About2.sks in Resources */ = {isa = PBXBuildFile; fileRef = 89D62901217887270098B02B /* About2.sks */; };
 		89D76AC72137E69300DB6C43 /* Detail.sks in Resources */ = {isa = PBXBuildFile; fileRef = 89D76AC62137E69300DB6C43 /* Detail.sks */; };
 		89D76ACD2138B64000DB6C43 /* saketime.png in Resources */ = {isa = PBXBuildFile; fileRef = 89D76ACC2138B64000DB6C43 /* saketime.png */; };
 		89D76ACF2138BA7800DB6C43 /* sakeInfo.sks in Resources */ = {isa = PBXBuildFile; fileRef = 89D76ACE2138BA7800DB6C43 /* sakeInfo.sks */; };
@@ -33,6 +36,9 @@
 		03469ADA20E0C0A600A949BD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		03D7EB0120EA51AF00221A8B /* About.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = About.sks; sourceTree = "<group>"; };
 		03D7EB0320EA5A6200221A8B /* WhatWeDo.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = WhatWeDo.sks; sourceTree = "<group>"; };
+		897100E7217880EB00A0BC84 /* wineInfo01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wineInfo01.png; sourceTree = "<group>"; };
+		897100E8217880EB00A0BC84 /* wineInfo02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wineInfo02.png; sourceTree = "<group>"; };
+		89D62901217887270098B02B /* About2.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = About2.sks; sourceTree = "<group>"; };
 		89D76AC62137E69300DB6C43 /* Detail.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Detail.sks; sourceTree = "<group>"; };
 		89D76ACC2138B64000DB6C43 /* saketime.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = saketime.png; sourceTree = "<group>"; };
 		89D76ACE2138BA7800DB6C43 /* sakeInfo.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = sakeInfo.sks; sourceTree = "<group>"; };
@@ -95,6 +101,8 @@
 				89D76AD02138BB0100DB6C43 /* sakeinfo.png */,
 				03469ACE20E0C0A500A949BD /* art.scnassets */,
 				03469AD520E0C0A600A949BD /* Assets.xcassets */,
+				897100E7217880EB00A0BC84 /* wineInfo01.png */,
+				897100E8217880EB00A0BC84 /* wineInfo02.png */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -116,6 +124,7 @@
 				03469ADA20E0C0A600A949BD /* Info.plist */,
 				89D76AC62137E69300DB6C43 /* Detail.sks */,
 				89D76ACE2138BA7800DB6C43 /* sakeInfo.sks */,
+				89D62901217887270098B02B /* About2.sks */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -179,11 +188,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				03469ACF20E0C0A500A949BD /* art.scnassets in Resources */,
+				897100E9217880EB00A0BC84 /* wineInfo01.png in Resources */,
 				03D7EB0420EA5A6200221A8B /* WhatWeDo.sks in Resources */,
+				897100EA217880EB00A0BC84 /* wineInfo02.png in Resources */,
 				89D76ACD2138B64000DB6C43 /* saketime.png in Resources */,
 				03469AD920E0C0A600A949BD /* LaunchScreen.storyboard in Resources */,
 				03D7EB0220EA51AF00221A8B /* About.sks in Resources */,
 				89D76AC72137E69300DB6C43 /* Detail.sks in Resources */,
+				89D62902217887270098B02B /* About2.sks in Resources */,
 				89D76ACF2138BA7800DB6C43 /* sakeInfo.sks in Resources */,
 				89D76AD12138BB0100DB6C43 /* sakeinfo.png in Resources */,
 				89D76AD32138BD6D00DB6C43 /* saketime2.png in Resources */,

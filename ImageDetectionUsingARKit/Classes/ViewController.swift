@@ -99,7 +99,7 @@ extension ViewController: ARSCNViewDelegate {
             plane.firstMaterial?.diffuse.contentsTransform = SCNMatrix4Translate(SCNMatrix4MakeScale(1, -1, 1), 0, 1, 0)
             //イメージ用Sceneノード生成
             let imageHightingAnimationNode = SCNNode(geometry: plane)
-            //オイラー角で回転＿意味不明
+            //オイラー角で回転＿地平に平行なのでX軸（横軸）で90度回転
             imageHightingAnimationNode.eulerAngles.x = -.pi / 2
             //オブジェクトの透明度を設定。かなり透明にしている
             imageHightingAnimationNode.opacity = 0.25
@@ -110,11 +110,11 @@ extension ViewController: ARSCNViewDelegate {
             imageHightingAnimationNode.runAction(imageHighlightAction) {
                 
                 // InfoのSpriteKitのシーンを生成。用意されているAboutのシーンを利用
-                let infoSpriteKitScene = SKScene(fileNamed: "sakeInfo")
+                let infoSpriteKitScene = SKScene(fileNamed: "About")
                 
                 infoSpriteKitScene?.isPaused = false
                 //ここでAbout用の平面生成。サイズはリファレンスイメージよりちょっと大きめ
-                let infoPlane = SCNPlane(width: CGFloat(imageSize.width * 1.5), height: CGFloat(imageSize.height * 1.2))
+                let infoPlane = SCNPlane(width: CGFloat(imageSize.width * 3), height: CGFloat(imageSize.height * 1.2))
                 //テスクチャーとしてAboutシーンを設定
                 infoPlane.firstMaterial?.diffuse.contents = infoSpriteKitScene
                 //テクスチャーのサイズ調整
@@ -127,21 +127,23 @@ extension ViewController: ARSCNViewDelegate {
                 infoUsNode.eulerAngles.x = -.pi / 2
                 //原点を設定
                 infoUsNode.position = SCNVector3Zero
+                //気持ち透明にしてみる
+                infoUsNode.opacity = 0.8
                 //Aboutノードをシーンノードのチャイルドノードに追加
                 node.addChildNode(infoUsNode)
                 //アクション開始
                 //アクションを設定。byは現在位置から指定分だけ移動に使用。
                 //0.8秒でX軸方向に。0.25m移動する
-                let move1Action = SCNAction.move(by: SCNVector3(-0.28, 0, 0), duration: 0.8)
+                let move1Action = SCNAction.move(by: SCNVector3(-0.1, 0, 0), duration: 0.8)
                 
                 infoUsNode.runAction(move1Action, completionHandler: {
                     
                 // AboutのSpriteKitのシーンを生成。用意されているAboutのシーンを利用
-                let aboutSpriteKitScene = SKScene(fileNamed: "Detail")
+                let aboutSpriteKitScene = SKScene(fileNamed: "About2")
                 
                 aboutSpriteKitScene?.isPaused = false
                 //ここでAbout用の平面生成。サイズはリファレンスイメージよりちょっと大きめ
-                let aboutUsPlane = SCNPlane(width: CGFloat(imageSize.width * 1.5), height: CGFloat(imageSize.height * 1.2))
+                let aboutUsPlane = SCNPlane(width: CGFloat(imageSize.width * 3), height: CGFloat(imageSize.height * 1.2))
                 //テスクチャーとしてAboutシーンを設定
                 aboutUsPlane.firstMaterial?.diffuse.contents = aboutSpriteKitScene
                 //テクスチャーのサイズ調整
@@ -154,12 +156,14 @@ extension ViewController: ARSCNViewDelegate {
                 aboutUsNode.eulerAngles.x = -.pi / 2
                 //原点を設定
                  aboutUsNode.position = SCNVector3Zero
+                //気持ち透明にしてみる
+                aboutUsNode.opacity = 0.8
                 //Aboutノードをシーンノードのチャイルドノードに追加
                 node.addChildNode(aboutUsNode)
                 //アクション開始
                 //アクションを設定。byは現在位置から指定分だけ移動に使用。
                 //0.8秒でX軸方向に。0.25m移動する
-                let moveAction = SCNAction.move(by: SCNVector3(0.28, 0, 0), duration: 0.8)
+                let moveAction = SCNAction.move(by: SCNVector3(0.1, 0, 0), duration: 0.8)
                 //Aboutノードにアクションを設定して実行
                 
                 aboutUsNode.runAction(moveAction, completionHandler: {
