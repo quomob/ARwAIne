@@ -119,7 +119,6 @@ extension ViewController: ARSCNViewDelegate {
                 infoPlane.firstMaterial?.diffuse.contents = infoSpriteKitScene
                 //テクスチャーのサイズ調整
                 infoPlane.firstMaterial?.diffuse.contentsTransform = SCNMatrix4Translate(SCNMatrix4MakeScale(1, -1, 1), 0, 1, 0)
-              //  infoPlane.firstMaterial?.diffuse.contentsTransform = SCNMatrix4Translate(SCNMatrix4MakeScale(1, -1, 1), 0, 1, 0)
                 //About用ノード生成
                 let infoUsNode = SCNNode(geometry: infoPlane)
                 //trueにすると表面のみ表示する
@@ -149,7 +148,6 @@ extension ViewController: ARSCNViewDelegate {
                 aboutUsPlane.firstMaterial?.diffuse.contents = aboutSpriteKitScene
                 //テクスチャーのサイズ調整
                 aboutUsPlane.firstMaterial?.diffuse.contentsTransform = SCNMatrix4Translate(SCNMatrix4MakeScale(1, -1, 1), 0, 1, 0)
-            //    aboutUsPlane.firstMaterial?.diffuse.contentsTransform = SCNMatrix4Translate(SCNMatrix4MakeScale(1, -1, 1), 0, 1, 0)
                 //About用ノード生成
                 let aboutUsNode = SCNNode(geometry: aboutUsPlane)
                 //trueにすると表面のみ表示する
