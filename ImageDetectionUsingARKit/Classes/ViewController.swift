@@ -9,6 +9,8 @@
 import UIKit
 import SceneKit
 import ARKit
+import AVKit
+import AVFoundation
 
 /// ViewController
 class ViewController: UIViewController {
@@ -33,6 +35,16 @@ class ViewController: UIViewController {
             .removeFromParentNode()
             ])
     }
+    
+    let videoPlayer:AVPlayer = {
+      //  let url = URL(string: "https://youtu.be/_D2_lTmG-6w")
+        guard let url = Bundle.main.url(forResource:"suntory",withExtension:"mp4",subdirectory:"art.scnassets")
+            else {
+                print("Could not find vide files")
+                return AVPlayer()
+        }
+        return AVPlayer(url: url)
+    }()
     
     /// View Life Cycle
     override func viewDidLoad() {
@@ -94,7 +106,8 @@ extension ViewController: ARSCNViewDelegate {
             //イメージサイズをリファレンスイメージのフィジカルサイズから取得
             let imageSize = imageAnchor.referenceImage.physicalSize
             //SceneKitで平面を生成。サイズを取得したイメージのプロパティのサイズを設定
-            let plane = SCNPlane(width: CGFloat(imageSize.width), height: CGFloat(imageSize.height))
+            //let plane = SCNPlane(width: CGFloat(imageSize.width), height: CGFloat(imageSize.height))
+            let plane = SCNPlane(width: CGFloat(imageSize.width * 2.5), height: CGFloat(imageSize.height * 1.2))
             //ここではまだ平面に何も貼り付けられていないはずなのにテクスチャーの倍率調整を行なっている
             plane.firstMaterial?.diffuse.contentsTransform = SCNMatrix4Translate(SCNMatrix4MakeScale(1, -1, 1), 0, 1, 0)
             //イメージ用Sceneノード生成
@@ -137,7 +150,9 @@ extension ViewController: ARSCNViewDelegate {
                 let move1Action = SCNAction.move(by: SCNVector3(-0.1, 0, 0), duration: 0.8)
                 
                 infoUsNode.runAction(move1Action, completionHandler: {
-                    
+                })
+                
+                ///////////////////////////////////////////////////////////
                 // AboutのSpriteKitのシーンを生成。用意されているAboutのシーンを利用
                 let aboutSpriteKitScene = SKScene(fileNamed: "About2")
                 
@@ -163,12 +178,44 @@ extension ViewController: ARSCNViewDelegate {
                 //アクション開始
                 //アクションを設定。byは現在位置から指定分だけ移動に使用。
                 //0.8秒でX軸方向に。0.25m移動する
-                let moveAction = SCNAction.move(by: SCNVector3(0.1, 0, 0), duration: 0.8)
+                let move2Action = SCNAction.move(by: SCNVector3(0.1, 0, 0), duration: 0.8)
                 //Aboutノードにアクションを設定して実行
-                
-                aboutUsNode.runAction(moveAction, completionHandler: {
+                aboutUsNode.runAction(move2Action, completionHandler: {
                 })
-            })
+                
+                ///////////////////////////////////////////////////////////
+                // MovieのSpriteKitのシーンを生成。用意されているMovieのシーンを利用
+                let movieSpriteKitScene = SKScene(fileNamed: "Movie")
+                
+                movieSpriteKitScene?.isPaused = false
+                //ここでMovie用の平面生成。サイズはリファレンスイメージよりちょっと大きめ
+                let moviePlane = SCNPlane(width: CGFloat(imageSize.width * 4), height: CGFloat(imageSize.height * 1))
+                //テスクチャーとしてMovieシーンを設定
+                moviePlane.firstMaterial?.diffuse.contents = self.videoPlayer
+                self.videoPlayer.play()
+                //テクスチャーのサイズ調整
+                moviePlane.firstMaterial?.diffuse.contentsTransform = SCNMatrix4Translate(SCNMatrix4MakeScale(1, -1, 1), 0, 1, 0)
+                //Movie用ノード生成
+                let movieNode = SCNNode(geometry: moviePlane)
+                //trueにすると表面のみ表示する
+                movieNode.geometry?.firstMaterial?.isDoubleSided = true
+                //またオイラー角で回転
+                movieNode.eulerAngles.x = .pi / 2
+                //原点を設定
+                movieNode.position = SCNVector3Zero
+                //気持ち透明にしてみる
+                movieNode.opacity = 0.95
+                //Movieノードをシーンノードのチャイルドノードに追加
+                node.addChildNode(movieNode)
+                //アクション開始
+                //アクションを設定。byは現在位置から指定分だけ移動に使用。
+                //0.8秒でZ軸方向に。0.085m移動する
+                let move3Action = SCNAction.move(by: SCNVector3(0, 0, -0.1), duration: 0.8)
+                //Aboutノードにアクションを設定して実行
+                movieNode.runAction(move3Action, completionHandler: {
+                })
+                
+                
             }
         } else {
             print("Error: Failed to get ARImageAnchor")

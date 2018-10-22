@@ -16,6 +16,8 @@
 		897100E9217880EB00A0BC84 /* wineInfo01.png in Resources */ = {isa = PBXBuildFile; fileRef = 897100E7217880EB00A0BC84 /* wineInfo01.png */; };
 		897100EA217880EB00A0BC84 /* wineInfo02.png in Resources */ = {isa = PBXBuildFile; fileRef = 897100E8217880EB00A0BC84 /* wineInfo02.png */; };
 		89AB921C21797012009B454A /* About.sks in Resources */ = {isa = PBXBuildFile; fileRef = 89AB921B21797012009B454A /* About.sks */; };
+		89C20AD5217D9977002BF883 /* Movie.sks in Resources */ = {isa = PBXBuildFile; fileRef = 89C20AD4217D9977002BF883 /* Movie.sks */; };
+		89C20AD7217D998D002BF883 /* wineLabel.sks in Resources */ = {isa = PBXBuildFile; fileRef = 89C20AD6217D998D002BF883 /* wineLabel.sks */; };
 		89D76ACD2138B64000DB6C43 /* saketime.png in Resources */ = {isa = PBXBuildFile; fileRef = 89D76ACC2138B64000DB6C43 /* saketime.png */; };
 		89D76AD12138BB0100DB6C43 /* sakeinfo.png in Resources */ = {isa = PBXBuildFile; fileRef = 89D76AD02138BB0100DB6C43 /* sakeinfo.png */; };
 		89D76AD32138BD6D00DB6C43 /* saketime2.png in Resources */ = {isa = PBXBuildFile; fileRef = 89D76AD22138BD6D00DB6C43 /* saketime2.png */; };
@@ -34,6 +36,8 @@
 		897100E7217880EB00A0BC84 /* wineInfo01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wineInfo01.png; sourceTree = "<group>"; };
 		897100E8217880EB00A0BC84 /* wineInfo02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wineInfo02.png; sourceTree = "<group>"; };
 		89AB921B21797012009B454A /* About.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = About.sks; sourceTree = "<group>"; };
+		89C20AD4217D9977002BF883 /* Movie.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Movie.sks; sourceTree = "<group>"; };
+		89C20AD6217D998D002BF883 /* wineLabel.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = wineLabel.sks; sourceTree = "<group>"; };
 		89D76ACC2138B64000DB6C43 /* saketime.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = saketime.png; sourceTree = "<group>"; };
 		89D76AD02138BB0100DB6C43 /* sakeinfo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sakeinfo.png; sourceTree = "<group>"; };
 		89D76AD22138BD6D00DB6C43 /* saketime2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = saketime2.png; sourceTree = "<group>"; };
@@ -116,6 +120,8 @@
 				03469ADA20E0C0A600A949BD /* Info.plist */,
 				89AB921B21797012009B454A /* About.sks */,
 				89F77979217970CD00B6122B /* About2.sks */,
+				89C20AD4217D9977002BF883 /* Movie.sks */,
+				89C20AD6217D998D002BF883 /* wineLabel.sks */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -178,7 +184,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				89C20AD5217D9977002BF883 /* Movie.sks in Resources */,
 				89F7797A217970CD00B6122B /* About2.sks in Resources */,
+				89C20AD7217D998D002BF883 /* wineLabel.sks in Resources */,
 				03469ACF20E0C0A500A949BD /* art.scnassets in Resources */,
 				89AB921C21797012009B454A /* About.sks in Resources */,
 				897100E9217880EB00A0BC84 /* wineInfo01.png in Resources */,
