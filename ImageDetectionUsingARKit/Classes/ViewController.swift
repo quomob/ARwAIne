@@ -11,6 +11,7 @@ import SceneKit
 import ARKit
 import AVKit
 import AVFoundation
+import WebKit
 
 /// ViewController
 class ViewController: UIViewController {
@@ -46,9 +47,19 @@ class ViewController: UIViewController {
         return AVPlayer(url: url)
     }()
     
+    let webView:UIWebView = UIWebView(frame : CGRect(x: 0, y: 0, width: 320, height: 240))
+  //  let request = URLRequest(url: URL(string: "https://www.suntory.co.jp/wine/nihon/wine-cellar/list_tominooka.html#lwt")!)
+    let request = URLRequest(url: URL(string: "www.google.co.jp")!)
+    
     /// View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // create a web view
+        webView.scalesPageToFit = true
+        webView.loadRequest(request)
+
+
         prepareUI()
     }
     
@@ -64,10 +75,11 @@ class ViewController: UIViewController {
     }
 }
 
+
 // MARK: - UI Related Method(s)
 extension ViewController {
     
-    func prepareUI() {    
+    func prepareUI() {
         // Set the view's delegate
         sceneView.delegate = self
     }
@@ -103,6 +115,34 @@ extension ViewController: ARSCNViewDelegate {
         // SpriteKit（２Dを扱う）とSceneKit(3Dを扱う）を利用。紛らわしい。
         //ここのイメージアンカーにはアセットカタログに配置した参照イメージのプロパティが含まれている
         if let imageAnchor =  anchor as? ARImageAnchor {
+            
+            // create a web view
+            
+            let tvPlane = SCNPlane(width: 0.1, height: 0.1)
+            tvPlane.firstMaterial?.diffuse.contents = self.webView
+            tvPlane.firstMaterial?.isDoubleSided = true
+            
+            let tvPlaneNode = SCNNode(geometry: tvPlane)
+            
+            //trueにすると表面のみ表示する
+            tvPlaneNode.geometry?.firstMaterial?.isDoubleSided = true
+            //またオイラー角で回転
+            tvPlaneNode.eulerAngles.x = -.pi / 2
+            //原点を設定
+            tvPlaneNode.position = SCNVector3Zero
+            //気持ち透明にしてみる
+            tvPlaneNode.opacity = 0.9
+            //Aboutノードをシーンノードのチャイルドノードに追加
+            node.addChildNode(tvPlaneNode)
+            //アクション開始
+            //アクションを設定。byは現在位置から指定分だけ移動に使用。
+            //0.8秒でX軸方向に。0.25m移動する
+            let move4Action = SCNAction.move(by: SCNVector3(0.1, 0, 0), duration: 0.1)
+            //Aboutノードにアクションを設定して実行
+            tvPlaneNode.runAction(move4Action, completionHandler: {
+            })
+            
+            /*
             //イメージサイズをリファレンスイメージのフィジカルサイズから取得
             let imageSize = imageAnchor.referenceImage.physicalSize
             //SceneKitで平面を生成。サイズを取得したイメージのプロパティのサイズを設定
@@ -122,6 +162,7 @@ extension ViewController: ARSCNViewDelegate {
             //アニメーション実行
             imageHightingAnimationNode.runAction(imageHighlightAction) {
                 
+                imageHightingAnimationNode.opacity = 0
                 // InfoのSpriteKitのシーンを生成。用意されているAboutのシーンを利用
                 let infoSpriteKitScene = SKScene(fileNamed: "About")
                 
@@ -214,9 +255,10 @@ extension ViewController: ARSCNViewDelegate {
                 //Aboutノードにアクションを設定して実行
                 movieNode.runAction(move3Action, completionHandler: {
                 })
-                
+
                 
             }
+ */
         } else {
             print("Error: Failed to get ARImageAnchor")
         }
