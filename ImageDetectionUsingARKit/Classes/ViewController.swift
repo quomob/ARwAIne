@@ -281,10 +281,12 @@ extension ViewController: ARSCNViewDelegate {
                 let shopButtonScene = SCNScene(named: "art.scnassets/shop_button.scn")!
             
                 let shopButtonNode = shopButtonScene.rootNode.childNode(withName: "shopButton",recursively: true)
+                let movieButtonNode = shopButtonScene.rootNode.childNode(withName: "movieButton",recursively: true)
+                let infoButtonNode = shopButtonScene.rootNode.childNode(withName: "infoButton",recursively: true)
             
                 //let shopButtonNode = SCNNode(geometry: shopButtonScene)
                 //trueにすると表面のみ表示する
-            shopButtonNode!.geometry?.firstMaterial?.isDoubleSided = true
+                shopButtonNode!.geometry?.firstMaterial?.isDoubleSided = true
                 //またオイラー角で回転
                 shopButtonNode!.eulerAngles.x = -.pi / 2
                 //原点を設定
@@ -293,12 +295,18 @@ extension ViewController: ARSCNViewDelegate {
                 shopButtonNode!.opacity = 0.8
                 //Aboutノードをシーンノードのチャイルドノードに追加
                 node.addChildNode(shopButtonNode!)
+                node.addChildNode(movieButtonNode!)
+                node.addChildNode(infoButtonNode!)
                 //アクション開始
                 //アクションを設定。byは現在位置から指定分だけ移動に使用。
                 //0.8秒でX軸方向に。0.25m移動する
                 let move4Action = SCNAction.move(by: SCNVector3(0, 0, 0.05), duration: 0.8)
                 //Aboutノードにアクションを設定して実行
                 shopButtonNode!.runAction(move4Action, completionHandler: {
+                })
+                movieButtonNode!.runAction(move4Action, completionHandler: {
+                })
+                infoButtonNode!.runAction(move4Action, completionHandler: {
                 })
                 
     //        }
