@@ -39,26 +39,28 @@ class ViewController: UIViewController {
     
     let videoPlayer:AVPlayer = {
       //  let url = URL(string: "https://youtu.be/_D2_lTmG-6w")
-        guard let url = Bundle.main.url(forResource:"suntory",withExtension:"mp4",subdirectory:"art.scnassets")
+        guard let url = Bundle.main.url(forResource:"sadoya",withExtension:"mp4",subdirectory:"art.scnassets")
             else {
                 print("Could not find vide files")
                 return AVPlayer()
         }
         return AVPlayer(url: url)
     }()
-    
+    /*
     let webView:UIWebView = UIWebView(frame : CGRect(x: 0, y: 0, width: 320, height: 240))
   //  let request = URLRequest(url: URL(string: "https://www.suntory.co.jp/wine/nihon/wine-cellar/list_tominooka.html#lwt")!)
     let request = URLRequest(url: URL(string: "www.google.co.jp")!)
+ */
     
     /// View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        /*
         // create a web view
         webView.scalesPageToFit = true
         webView.loadRequest(request)
-
+        */
 
         prepareUI()
     }
@@ -116,8 +118,8 @@ extension ViewController: ARSCNViewDelegate {
         //ここのイメージアンカーにはアセットカタログに配置した参照イメージのプロパティが含まれている
         if let imageAnchor =  anchor as? ARImageAnchor {
             
+            /*
             // create a web view
-            
             let tvPlane = SCNPlane(width: 0.1, height: 0.1)
             tvPlane.firstMaterial?.diffuse.contents = self.webView
             tvPlane.firstMaterial?.isDoubleSided = true
@@ -141,10 +143,11 @@ extension ViewController: ARSCNViewDelegate {
             //Aboutノードにアクションを設定して実行
             tvPlaneNode.runAction(move4Action, completionHandler: {
             })
+            */
             
-            /*
             //イメージサイズをリファレンスイメージのフィジカルサイズから取得
             let imageSize = imageAnchor.referenceImage.physicalSize
+          /*
             //SceneKitで平面を生成。サイズを取得したイメージのプロパティのサイズを設定
             //let plane = SCNPlane(width: CGFloat(imageSize.width), height: CGFloat(imageSize.height))
             let plane = SCNPlane(width: CGFloat(imageSize.width * 2.5), height: CGFloat(imageSize.height * 1.2))
@@ -163,6 +166,8 @@ extension ViewController: ARSCNViewDelegate {
             imageHightingAnimationNode.runAction(imageHighlightAction) {
                 
                 imageHightingAnimationNode.opacity = 0
+ */
+        /*
                 // InfoのSpriteKitのシーンを生成。用意されているAboutのシーンを利用
                 let infoSpriteKitScene = SKScene(fileNamed: "About")
                 
@@ -192,6 +197,9 @@ extension ViewController: ARSCNViewDelegate {
                 
                 infoUsNode.runAction(move1Action, completionHandler: {
                 })
+        */
+                
+        /*
                 
                 ///////////////////////////////////////////////////////////
                 // AboutのSpriteKitのシーンを生成。用意されているAboutのシーンを利用
@@ -223,7 +231,8 @@ extension ViewController: ARSCNViewDelegate {
                 //Aboutノードにアクションを設定して実行
                 aboutUsNode.runAction(move2Action, completionHandler: {
                 })
-                
+ 
+        */
                 ///////////////////////////////////////////////////////////
                 // MovieのSpriteKitのシーンを生成。用意されているMovieのシーンを利用
                 let movieSpriteKitScene = SKScene(fileNamed: "Movie")
@@ -251,14 +260,49 @@ extension ViewController: ARSCNViewDelegate {
                 //アクション開始
                 //アクションを設定。byは現在位置から指定分だけ移動に使用。
                 //0.8秒でZ軸方向に。0.085m移動する
-                let move3Action = SCNAction.move(by: SCNVector3(0, 0, -0.1), duration: 0.8)
+                let move3Action = SCNAction.move(by: SCNVector3(0, 0, 0), duration: 0.8)
                 //Aboutノードにアクションを設定して実行
                 movieNode.runAction(move3Action, completionHandler: {
                 })
-
+            
+                // shop_buttonのSpriteKitのシーンを生成。用意されているAboutのシーンを利用
+                let shopButtonSpriteKitScene = SKScene(fileNamed: "shop_button")
+            
+                shopButtonSpriteKitScene?.isPaused = false
+                //ここでAbout用の平面生成。サイズはリファレンスイメージよりちょっと大きめ
+                //let shopButtonlane = SCNPlane(width: CGFloat(imageSize.width * 3), height: CGFloat(imageSize.height * 1.2))
+                let shopButtonlane = SCNPlane(width: 0.12, height: 0.12)
+                //テスクチャーとしてAboutシーンを設定
+                shopButtonlane.firstMaterial?.diffuse.contents = shopButtonSpriteKitScene
+                //テクスチャーのサイズ調整
+                shopButtonlane.firstMaterial?.diffuse.contentsTransform = SCNMatrix4Translate(SCNMatrix4MakeScale(1, -1, 1), 0, 1, 0)
+                //About用ノード生成
+           //     let shopButtonNode = SCNNode(geometry: shopButtonlane)
+                let shopButtonScene = SCNScene(named: "art.scnassets/shop_button.scn")!
+            
+                let shopButtonNode = shopButtonScene.rootNode.childNode(withName: "shopButton",recursively: true)
+            
+                //let shopButtonNode = SCNNode(geometry: shopButtonScene)
+                //trueにすると表面のみ表示する
+            shopButtonNode!.geometry?.firstMaterial?.isDoubleSided = true
+                //またオイラー角で回転
+                shopButtonNode!.eulerAngles.x = -.pi / 2
+                //原点を設定
+                shopButtonNode!.position = SCNVector3Zero
+                //気持ち透明にしてみる
+                shopButtonNode!.opacity = 0.8
+                //Aboutノードをシーンノードのチャイルドノードに追加
+                node.addChildNode(shopButtonNode!)
+                //アクション開始
+                //アクションを設定。byは現在位置から指定分だけ移動に使用。
+                //0.8秒でX軸方向に。0.25m移動する
+                let move4Action = SCNAction.move(by: SCNVector3(0, 0, 0.05), duration: 0.8)
+                //Aboutノードにアクションを設定して実行
+                shopButtonNode!.runAction(move4Action, completionHandler: {
+                })
                 
-            }
- */
+    //        }
+ 
         } else {
             print("Error: Failed to get ARImageAnchor")
         }

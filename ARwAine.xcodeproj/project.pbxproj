@@ -21,6 +21,14 @@
 		89D76ACD2138B64000DB6C43 /* saketime.png in Resources */ = {isa = PBXBuildFile; fileRef = 89D76ACC2138B64000DB6C43 /* saketime.png */; };
 		89D76AD12138BB0100DB6C43 /* sakeinfo.png in Resources */ = {isa = PBXBuildFile; fileRef = 89D76AD02138BB0100DB6C43 /* sakeinfo.png */; };
 		89D76AD32138BD6D00DB6C43 /* saketime2.png in Resources */ = {isa = PBXBuildFile; fileRef = 89D76AD22138BD6D00DB6C43 /* saketime2.png */; };
+		89E602BA219A8FBC00B40BD5 /* shop_button.sks in Resources */ = {isa = PBXBuildFile; fileRef = 89E602B9219A8FBC00B40BD5 /* shop_button.sks */; };
+		89E602C0219A8FCF00B40BD5 /* if_video_1054941.png in Resources */ = {isa = PBXBuildFile; fileRef = 89E602BB219A8FCE00B40BD5 /* if_video_1054941.png */; };
+		89E602C1219A8FCF00B40BD5 /* if_cart_1055098.png in Resources */ = {isa = PBXBuildFile; fileRef = 89E602BC219A8FCF00B40BD5 /* if_cart_1055098.png */; };
+		89E602C2219A8FCF00B40BD5 /* if_magnifyingglass_1055031.png in Resources */ = {isa = PBXBuildFile; fileRef = 89E602BD219A8FCF00B40BD5 /* if_magnifyingglass_1055031.png */; };
+		89E602C3219A8FCF00B40BD5 /* if_clipboard_1055091.png in Resources */ = {isa = PBXBuildFile; fileRef = 89E602BE219A8FCF00B40BD5 /* if_clipboard_1055091.png */; };
+		89E602C4219A8FCF00B40BD5 /* if_play_1055007.png in Resources */ = {isa = PBXBuildFile; fileRef = 89E602BF219A8FCF00B40BD5 /* if_play_1055007.png */; };
+		89EF6E39219A87210023EEEA /* sadoya_logo_icon.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 89EF6E38219A87210023EEEA /* sadoya_logo_icon.jpeg */; };
+		89EF6E3B219A87600023EEEA /* sadoya_logo_icon2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 89EF6E3A219A87600023EEEA /* sadoya_logo_icon2.jpg */; };
 		89F7797A217970CD00B6122B /* About2.sks in Resources */ = {isa = PBXBuildFile; fileRef = 89F77979217970CD00B6122B /* About2.sks */; };
 /* End PBXBuildFile section */
 
@@ -41,6 +49,14 @@
 		89D76ACC2138B64000DB6C43 /* saketime.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = saketime.png; sourceTree = "<group>"; };
 		89D76AD02138BB0100DB6C43 /* sakeinfo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sakeinfo.png; sourceTree = "<group>"; };
 		89D76AD22138BD6D00DB6C43 /* saketime2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = saketime2.png; sourceTree = "<group>"; };
+		89E602B9219A8FBC00B40BD5 /* shop_button.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = shop_button.sks; sourceTree = "<group>"; };
+		89E602BB219A8FCE00B40BD5 /* if_video_1054941.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = if_video_1054941.png; sourceTree = "<group>"; };
+		89E602BC219A8FCF00B40BD5 /* if_cart_1055098.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = if_cart_1055098.png; sourceTree = "<group>"; };
+		89E602BD219A8FCF00B40BD5 /* if_magnifyingglass_1055031.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = if_magnifyingglass_1055031.png; sourceTree = "<group>"; };
+		89E602BE219A8FCF00B40BD5 /* if_clipboard_1055091.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = if_clipboard_1055091.png; sourceTree = "<group>"; };
+		89E602BF219A8FCF00B40BD5 /* if_play_1055007.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = if_play_1055007.png; sourceTree = "<group>"; };
+		89EF6E38219A87210023EEEA /* sadoya_logo_icon.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sadoya_logo_icon.jpeg; sourceTree = "<group>"; };
+		89EF6E3A219A87600023EEEA /* sadoya_logo_icon2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sadoya_logo_icon2.jpg; sourceTree = "<group>"; };
 		89F77979217970CD00B6122B /* About2.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = About2.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -94,6 +110,13 @@
 		03469AE120E0C11100A949BD /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				89E602BC219A8FCF00B40BD5 /* if_cart_1055098.png */,
+				89E602BE219A8FCF00B40BD5 /* if_clipboard_1055091.png */,
+				89E602BD219A8FCF00B40BD5 /* if_magnifyingglass_1055031.png */,
+				89E602BF219A8FCF00B40BD5 /* if_play_1055007.png */,
+				89E602BB219A8FCE00B40BD5 /* if_video_1054941.png */,
+				89EF6E38219A87210023EEEA /* sadoya_logo_icon.jpeg */,
+				89EF6E3A219A87600023EEEA /* sadoya_logo_icon2.jpg */,
 				89D76ACC2138B64000DB6C43 /* saketime.png */,
 				89D76AD22138BD6D00DB6C43 /* saketime2.png */,
 				89D76AD02138BB0100DB6C43 /* sakeinfo.png */,
@@ -118,6 +141,7 @@
 			isa = PBXGroup;
 			children = (
 				03469ADA20E0C0A600A949BD /* Info.plist */,
+				89E602B9219A8FBC00B40BD5 /* shop_button.sks */,
 				89AB921B21797012009B454A /* About.sks */,
 				89F77979217970CD00B6122B /* About2.sks */,
 				89C20AD4217D9977002BF883 /* Movie.sks */,
@@ -184,11 +208,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				89EF6E39219A87210023EEEA /* sadoya_logo_icon.jpeg in Resources */,
 				89C20AD5217D9977002BF883 /* Movie.sks in Resources */,
+				89E602C0219A8FCF00B40BD5 /* if_video_1054941.png in Resources */,
+				89E602C1219A8FCF00B40BD5 /* if_cart_1055098.png in Resources */,
 				89F7797A217970CD00B6122B /* About2.sks in Resources */,
+				89E602BA219A8FBC00B40BD5 /* shop_button.sks in Resources */,
 				89C20AD7217D998D002BF883 /* wineLabel.sks in Resources */,
 				03469ACF20E0C0A500A949BD /* art.scnassets in Resources */,
 				89AB921C21797012009B454A /* About.sks in Resources */,
+				89E602C4219A8FCF00B40BD5 /* if_play_1055007.png in Resources */,
+				89E602C3219A8FCF00B40BD5 /* if_clipboard_1055091.png in Resources */,
+				89EF6E3B219A87600023EEEA /* sadoya_logo_icon2.jpg in Resources */,
 				897100E9217880EB00A0BC84 /* wineInfo01.png in Resources */,
 				897100EA217880EB00A0BC84 /* wineInfo02.png in Resources */,
 				89D76ACD2138B64000DB6C43 /* saketime.png in Resources */,
@@ -196,6 +227,7 @@
 				89D76AD12138BB0100DB6C43 /* sakeinfo.png in Resources */,
 				89D76AD32138BD6D00DB6C43 /* saketime2.png in Resources */,
 				03469AD620E0C0A600A949BD /* Assets.xcassets in Resources */,
+				89E602C2219A8FCF00B40BD5 /* if_magnifyingglass_1055031.png in Resources */,
 				03469AD420E0C0A500A949BD /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -352,6 +384,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-1";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = PB27R2BET8;
@@ -373,6 +406,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-1";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = PB27R2BET8;
