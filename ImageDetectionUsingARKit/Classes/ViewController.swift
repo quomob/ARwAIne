@@ -2,8 +2,6 @@
 //  ViewController.swift
 //  ImageDetectionUsingARKit
 //
-//  Created by Yudiz on 25/06/18.
-//  Copyright © 2018 Yudiz. All rights reserved.
 //
 
 import UIKit
@@ -18,6 +16,26 @@ class ViewController: UIViewController {
     
     /// IBOutlet(s)
     @IBOutlet var sceneView: ARSCNView!
+    
+    
+    @IBAction func tap(_ sender: UITapGestureRecognizer) {
+        let sceneView = sender.view as! ARSCNView
+        let touchLocation = sender.location(in: sceneView)
+        let hitResults = sceneView.hitTest(touchLocation)
+        
+        if !hitResults.isEmpty{
+            let hitNode = hitResults.first
+            if hitNode?.node.name == "shopButton"
+            {
+                print("hello world")
+            }
+            
+        }
+            
+        else{
+            //何もしない
+        }
+    }
     
     /// Variable Declaration(s)
     var imageHighlightAction: SCNAction {
@@ -281,8 +299,11 @@ extension ViewController: ARSCNViewDelegate {
                 let shopButtonScene = SCNScene(named: "art.scnassets/shop_button.scn")!
             
                 let shopButtonNode = shopButtonScene.rootNode.childNode(withName: "shopButton",recursively: true)
+                shopButtonNode?.name = "shopButton"
                 let movieButtonNode = shopButtonScene.rootNode.childNode(withName: "movieButton",recursively: true)
+                movieButtonNode?.name = "movieButton"
                 let infoButtonNode = shopButtonScene.rootNode.childNode(withName: "infoButton",recursively: true)
+                infoButtonNode?.name = "infoButton"
             
                 //let shopButtonNode = SCNNode(geometry: shopButtonScene)
                 //trueにすると表面のみ表示する

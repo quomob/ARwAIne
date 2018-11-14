@@ -30,6 +30,10 @@
                             </button>
                             <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MuG-k4-Fbz">
                                 <rect key="frame" x="44" y="0.0" width="724" height="354"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="SUm-gE-9pg" appends="YES" id="Okx-kQ-2cZ"/>
+                                </connections>
                             </arscnView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -48,6 +52,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="SUm-gE-9pg">
+                    <connections>
+                        <action selector="tap:" destination="BV1-FR-VrT" id="OKl-wD-HTJ"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="137.4384236453202" y="127.2"/>
         </scene>
