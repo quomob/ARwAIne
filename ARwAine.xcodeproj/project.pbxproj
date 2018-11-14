@@ -13,6 +13,8 @@
 		03469AD420E0C0A500A949BD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03469AD220E0C0A500A949BD /* Main.storyboard */; };
 		03469AD620E0C0A600A949BD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03469AD520E0C0A600A949BD /* Assets.xcassets */; };
 		03469AD920E0C0A600A949BD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03469AD720E0C0A600A949BD /* LaunchScreen.storyboard */; };
+		89705126219B9F4F00D502EA /* splash_sadoya.png in Resources */ = {isa = PBXBuildFile; fileRef = 89705125219B9F4F00D502EA /* splash_sadoya.png */; };
+		89705128219B9FBA00D502EA /* splash_sadoya_landscape.png in Resources */ = {isa = PBXBuildFile; fileRef = 89705127219B9FBA00D502EA /* splash_sadoya_landscape.png */; };
 		897100E9217880EB00A0BC84 /* wineInfo01.png in Resources */ = {isa = PBXBuildFile; fileRef = 897100E7217880EB00A0BC84 /* wineInfo01.png */; };
 		897100EA217880EB00A0BC84 /* wineInfo02.png in Resources */ = {isa = PBXBuildFile; fileRef = 897100E8217880EB00A0BC84 /* wineInfo02.png */; };
 		89AB921C21797012009B454A /* About.sks in Resources */ = {isa = PBXBuildFile; fileRef = 89AB921B21797012009B454A /* About.sks */; };
@@ -41,6 +43,8 @@
 		03469AD520E0C0A600A949BD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		03469AD820E0C0A600A949BD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		03469ADA20E0C0A600A949BD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		89705125219B9F4F00D502EA /* splash_sadoya.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splash_sadoya.png; sourceTree = "<group>"; };
+		89705127219B9FBA00D502EA /* splash_sadoya_landscape.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splash_sadoya_landscape.png; sourceTree = "<group>"; };
 		897100E7217880EB00A0BC84 /* wineInfo01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wineInfo01.png; sourceTree = "<group>"; };
 		897100E8217880EB00A0BC84 /* wineInfo02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wineInfo02.png; sourceTree = "<group>"; };
 		89AB921B21797012009B454A /* About.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = About.sks; sourceTree = "<group>"; };
@@ -120,6 +124,8 @@
 				89D76ACC2138B64000DB6C43 /* saketime.png */,
 				89D76AD22138BD6D00DB6C43 /* saketime2.png */,
 				89D76AD02138BB0100DB6C43 /* sakeinfo.png */,
+				89705125219B9F4F00D502EA /* splash_sadoya.png */,
+				89705127219B9FBA00D502EA /* splash_sadoya_landscape.png */,
 				03469ACE20E0C0A500A949BD /* art.scnassets */,
 				03469AD520E0C0A600A949BD /* Assets.xcassets */,
 				897100E7217880EB00A0BC84 /* wineInfo01.png */,
@@ -213,6 +219,7 @@
 				89E602C0219A8FCF00B40BD5 /* if_video_1054941.png in Resources */,
 				89E602C1219A8FCF00B40BD5 /* if_cart_1055098.png in Resources */,
 				89F7797A217970CD00B6122B /* About2.sks in Resources */,
+				89705126219B9F4F00D502EA /* splash_sadoya.png in Resources */,
 				89E602BA219A8FBC00B40BD5 /* shop_button.sks in Resources */,
 				89C20AD7217D998D002BF883 /* wineLabel.sks in Resources */,
 				03469ACF20E0C0A500A949BD /* art.scnassets in Resources */,
@@ -225,6 +232,7 @@
 				89D76ACD2138B64000DB6C43 /* saketime.png in Resources */,
 				03469AD920E0C0A600A949BD /* LaunchScreen.storyboard in Resources */,
 				89D76AD12138BB0100DB6C43 /* sakeinfo.png in Resources */,
+				89705128219B9FBA00D502EA /* splash_sadoya_landscape.png in Resources */,
 				89D76AD32138BD6D00DB6C43 /* saketime2.png in Resources */,
 				03469AD620E0C0A600A949BD /* Assets.xcassets in Resources */,
 				89E602C2219A8FCF00B40BD5 /* if_magnifyingglass_1055031.png in Resources */,
@@ -389,6 +397,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = PB27R2BET8;
 				INFOPLIST_FILE = "$(SRCROOT)/ImageDetectionUsingARKit/Resources/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -411,6 +420,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = PB27R2BET8;
 				INFOPLIST_FILE = "$(SRCROOT)/ImageDetectionUsingARKit/Resources/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

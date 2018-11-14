@@ -287,12 +287,20 @@ extension ViewController: ARSCNViewDelegate {
                 //let shopButtonNode = SCNNode(geometry: shopButtonScene)
                 //trueにすると表面のみ表示する
                 shopButtonNode!.geometry?.firstMaterial?.isDoubleSided = true
+                movieButtonNode!.geometry?.firstMaterial?.isDoubleSided = true
+                infoButtonNode!.geometry?.firstMaterial?.isDoubleSided = true
                 //またオイラー角で回転
                 shopButtonNode!.eulerAngles.x = -.pi / 2
+                movieButtonNode!.eulerAngles.x = -.pi / 2
+                infoButtonNode!.eulerAngles.x = -.pi / 2
                 //原点を設定
                 shopButtonNode!.position = SCNVector3Zero
+                movieButtonNode!.position = SCNVector3Zero
+                infoButtonNode!.position = SCNVector3Zero
                 //気持ち透明にしてみる
-                shopButtonNode!.opacity = 0.8
+                shopButtonNode!.opacity = 0.9
+                movieButtonNode!.opacity = 0.9
+                infoButtonNode!.opacity = 0.9
                 //Aboutノードをシーンノードのチャイルドノードに追加
                 node.addChildNode(shopButtonNode!)
                 node.addChildNode(movieButtonNode!)
@@ -300,14 +308,18 @@ extension ViewController: ARSCNViewDelegate {
                 //アクション開始
                 //アクションを設定。byは現在位置から指定分だけ移動に使用。
                 //0.8秒でX軸方向に。0.25m移動する
-                let move4Action = SCNAction.move(by: SCNVector3(0, 0, 0.05), duration: 0.8)
+                let move4Action = SCNAction.move(by: SCNVector3(-0.03, 0, 0.055), duration: 0.8)
+                let move5Action = SCNAction.move(by: SCNVector3(0, 0, 0.055), duration: 0.8)
+                let move6Action = SCNAction.move(by: SCNVector3(0.03, 0, 0.055), duration: 0.8)
                 //Aboutノードにアクションを設定して実行
-                shopButtonNode!.runAction(move4Action, completionHandler: {
-                })
-                movieButtonNode!.runAction(move4Action, completionHandler: {
-                })
                 infoButtonNode!.runAction(move4Action, completionHandler: {
                 })
+                movieButtonNode!.runAction(move5Action, completionHandler: {
+                })
+                shopButtonNode!.runAction(move6Action, completionHandler: {
+                })
+
+
                 
     //        }
  
