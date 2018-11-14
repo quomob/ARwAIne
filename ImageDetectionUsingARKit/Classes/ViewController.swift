@@ -27,9 +27,10 @@ class ViewController: UIViewController {
             let hitNode = hitResults.first
             if hitNode?.node.name == "shopButton"
             {
-                print("hello world")
+                let url = URL(string: "http://sadoya-wine.com/fs/sadoya/red_wine/KT1675R")
+                UIApplication.shared.open(url!)
             }
-            
+
         }
             
         else{
