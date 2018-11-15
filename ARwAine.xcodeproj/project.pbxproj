@@ -13,6 +13,10 @@
 		03469AD420E0C0A500A949BD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03469AD220E0C0A500A949BD /* Main.storyboard */; };
 		03469AD620E0C0A600A949BD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03469AD520E0C0A600A949BD /* Assets.xcassets */; };
 		03469AD920E0C0A600A949BD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03469AD720E0C0A600A949BD /* LaunchScreen.storyboard */; };
+		89639C7C219CF55500A34597 /* sadoya_logo_120.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 89639C7B219CF55500A34597 /* sadoya_logo_120.jpg */; };
+		89639C84219CF64B00A34597 /* sadoya_logo_1024.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 89639C80219CF64A00A34597 /* sadoya_logo_1024.jpg */; };
+		89639C88219CF67D00A34597 /* koutetsu100_label .jpg in Resources */ = {isa = PBXBuildFile; fileRef = 89639C87219CF67D00A34597 /* koutetsu100_label .jpg */; };
+		89639C8A219CFC6F00A34597 /* ios-icons in Resources */ = {isa = PBXBuildFile; fileRef = 89639C89219CFC6F00A34597 /* ios-icons */; };
 		89705126219B9F4F00D502EA /* splash_sadoya.png in Resources */ = {isa = PBXBuildFile; fileRef = 89705125219B9F4F00D502EA /* splash_sadoya.png */; };
 		89705128219B9FBA00D502EA /* splash_sadoya_landscape.png in Resources */ = {isa = PBXBuildFile; fileRef = 89705127219B9FBA00D502EA /* splash_sadoya_landscape.png */; };
 		897100E9217880EB00A0BC84 /* wineInfo01.png in Resources */ = {isa = PBXBuildFile; fileRef = 897100E7217880EB00A0BC84 /* wineInfo01.png */; };
@@ -43,6 +47,10 @@
 		03469AD520E0C0A600A949BD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		03469AD820E0C0A600A949BD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		03469ADA20E0C0A600A949BD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		89639C7B219CF55500A34597 /* sadoya_logo_120.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sadoya_logo_120.jpg; sourceTree = "<group>"; };
+		89639C80219CF64A00A34597 /* sadoya_logo_1024.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sadoya_logo_1024.jpg; sourceTree = "<group>"; };
+		89639C87219CF67D00A34597 /* koutetsu100_label .jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "koutetsu100_label .jpg"; sourceTree = "<group>"; };
+		89639C89219CFC6F00A34597 /* ios-icons */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "ios-icons"; sourceTree = "<group>"; };
 		89705125219B9F4F00D502EA /* splash_sadoya.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splash_sadoya.png; sourceTree = "<group>"; };
 		89705127219B9FBA00D502EA /* splash_sadoya_landscape.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splash_sadoya_landscape.png; sourceTree = "<group>"; };
 		897100E7217880EB00A0BC84 /* wineInfo01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wineInfo01.png; sourceTree = "<group>"; };
@@ -114,8 +122,10 @@
 		03469AE120E0C11100A949BD /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				89639C89219CFC6F00A34597 /* ios-icons */,
 				89E602BC219A8FCF00B40BD5 /* if_cart_1055098.png */,
 				89E602BE219A8FCF00B40BD5 /* if_clipboard_1055091.png */,
+				89639C80219CF64A00A34597 /* sadoya_logo_1024.jpg */,
 				89E602BD219A8FCF00B40BD5 /* if_magnifyingglass_1055031.png */,
 				89E602BF219A8FCF00B40BD5 /* if_play_1055007.png */,
 				89E602BB219A8FCE00B40BD5 /* if_video_1054941.png */,
@@ -124,6 +134,8 @@
 				89D76ACC2138B64000DB6C43 /* saketime.png */,
 				89D76AD22138BD6D00DB6C43 /* saketime2.png */,
 				89D76AD02138BB0100DB6C43 /* sakeinfo.png */,
+				89639C87219CF67D00A34597 /* koutetsu100_label .jpg */,
+				89639C7B219CF55500A34597 /* sadoya_logo_120.jpg */,
 				89705125219B9F4F00D502EA /* splash_sadoya.png */,
 				89705127219B9FBA00D502EA /* splash_sadoya_landscape.png */,
 				03469ACE20E0C0A500A949BD /* art.scnassets */,
@@ -224,6 +236,7 @@
 				89C20AD7217D998D002BF883 /* wineLabel.sks in Resources */,
 				03469ACF20E0C0A500A949BD /* art.scnassets in Resources */,
 				89AB921C21797012009B454A /* About.sks in Resources */,
+				89639C8A219CFC6F00A34597 /* ios-icons in Resources */,
 				89E602C4219A8FCF00B40BD5 /* if_play_1055007.png in Resources */,
 				89E602C3219A8FCF00B40BD5 /* if_clipboard_1055091.png in Resources */,
 				89EF6E3B219A87600023EEEA /* sadoya_logo_icon2.jpg in Resources */,
@@ -235,6 +248,9 @@
 				89705128219B9FBA00D502EA /* splash_sadoya_landscape.png in Resources */,
 				89D76AD32138BD6D00DB6C43 /* saketime2.png in Resources */,
 				03469AD620E0C0A600A949BD /* Assets.xcassets in Resources */,
+				89639C7C219CF55500A34597 /* sadoya_logo_120.jpg in Resources */,
+				89639C84219CF64B00A34597 /* sadoya_logo_1024.jpg in Resources */,
+				89639C88219CF67D00A34597 /* koutetsu100_label .jpg in Resources */,
 				89E602C2219A8FCF00B40BD5 /* if_magnifyingglass_1055031.png in Resources */,
 				03469AD420E0C0A500A949BD /* Main.storyboard in Resources */,
 			);
