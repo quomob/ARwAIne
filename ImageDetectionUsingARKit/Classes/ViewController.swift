@@ -186,15 +186,17 @@ extension ViewController: ARSCNViewDelegate {
                 
                 imageHightingAnimationNode.opacity = 0
  */
-        /*
+        
                 // InfoのSpriteKitのシーンを生成。用意されているAboutのシーンを利用
+            /*
                 let infoSpriteKitScene = SKScene(fileNamed: "About")
                 
                 infoSpriteKitScene?.isPaused = false
+ */
                 //ここでAbout用の平面生成。サイズはリファレンスイメージよりちょっと大きめ
-                let infoPlane = SCNPlane(width: CGFloat(imageSize.width * 3), height: CGFloat(imageSize.height * 1.2))
+                let infoPlane = SCNPlane(width: CGFloat(imageSize.width * 5), height: CGFloat(imageSize.height * 1.2))
                 //テスクチャーとしてAboutシーンを設定
-                infoPlane.firstMaterial?.diffuse.contents = infoSpriteKitScene
+                infoPlane.firstMaterial?.diffuse.contents = UIImage(named: "art.scnassets/koutetsu100info.png")
                 //テクスチャーのサイズ調整
                 infoPlane.firstMaterial?.diffuse.contentsTransform = SCNMatrix4Translate(SCNMatrix4MakeScale(1, -1, 1), 0, 1, 0)
                 //About用ノード生成
@@ -202,7 +204,7 @@ extension ViewController: ARSCNViewDelegate {
                 //trueにすると表面のみ表示する
                 infoUsNode.geometry?.firstMaterial?.isDoubleSided = true
                 //またオイラー角で回転
-                infoUsNode.eulerAngles.x = -.pi / 2
+                infoUsNode.eulerAngles.x = .pi / 2
                 //原点を設定
                 infoUsNode.position = SCNVector3Zero
                 //気持ち透明にしてみる
@@ -211,12 +213,14 @@ extension ViewController: ARSCNViewDelegate {
                 node.addChildNode(infoUsNode)
                 //アクション開始
                 //アクションを設定。byは現在位置から指定分だけ移動に使用。
+            /*
                 //0.8秒でX軸方向に。0.25m移動する
                 let move1Action = SCNAction.move(by: SCNVector3(-0.1, 0, 0), duration: 0.8)
                 
                 infoUsNode.runAction(move1Action, completionHandler: {
                 })
-        */
+ */
+        
                 
         /*
                 
@@ -252,6 +256,7 @@ extension ViewController: ARSCNViewDelegate {
                 })
  
         */
+        /*
                 ///////////////////////////////////////////////////////////
                 // MovieのSpriteKitのシーンを生成。用意されているMovieのシーンを利用
                 let movieSpriteKitScene = SKScene(fileNamed: "Movie")
@@ -283,7 +288,7 @@ extension ViewController: ARSCNViewDelegate {
                 //Aboutノードにアクションを設定して実行
                 movieNode.runAction(move3Action, completionHandler: {
                 })
-            
+            */
                 // shop_buttonのSpriteKitのシーンを生成。用意されているAboutのシーンを利用
                 let shopButtonSpriteKitScene = SKScene(fileNamed: "shop_button")
             
