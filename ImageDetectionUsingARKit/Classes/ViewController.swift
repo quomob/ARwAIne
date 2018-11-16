@@ -17,27 +17,41 @@ class ViewController: UIViewController {
     /// IBOutlet(s)
     @IBOutlet var sceneView: ARSCNView!
     
-    
     @IBAction func tap(_ sender: UITapGestureRecognizer) {
         let sceneView = sender.view as! ARSCNView
         let touchLocation = sender.location(in: sceneView)
         let hitResults = sceneView.hitTest(touchLocation)
         
+        //以下、まともに動かず。
+        let node = self.sceneView.scene.rootNode
+        let imageSize = imageAnchor.referenceImage.physicalSize
+        
         if !hitResults.isEmpty{
             let hitNode = hitResults.first
+            //ショップボタンがこされた場合Safariを起動しオンラインショッピングのサイトへ遷移
             if hitNode?.node.name == "shopButton"
             {
                 let url = URL(string: "http://sadoya-wine.com/fs/sadoya/red_wine/KT1675R")
                 UIApplication.shared.open(url!)
+            //ムービーボタンが押下された場合ムービーを再生
             }
-
-        }
-            
-        else{
-            //何もしない
+            else if hitNode?.node.name == "movieButton"
+            {
+                let theNode = node.childNode(withName: "infoObj", recursively: true)
+                theNode?.removeFromParentNode()//ここまでは機能している
+                addMovieNode(node: node, imageSize: imageSize)
+            }
+            else if hitNode?.node.name == "infoButton"
+            {
+                let theNode = node.childNode(withName: "movieObj", recursively: true)
+                theNode?.removeFromParentNode()//ここまでは機能している
+                addInfoNode(node: node, imageSize: imageSize)
+            }
         }
     }
-    
+
+    var imageAnchor: ARImageAnchor!
+
     /// Variable Declaration(s)
     var imageHighlightAction: SCNAction {
         return .sequence([
@@ -65,11 +79,12 @@ class ViewController: UIViewController {
         }
         return AVPlayer(url: url)
     }()
-    /*
+    
+/*
     let webView:UIWebView = UIWebView(frame : CGRect(x: 0, y: 0, width: 320, height: 240))
-  //  let request = URLRequest(url: URL(string: "https://www.suntory.co.jp/wine/nihon/wine-cellar/list_tominooka.html#lwt")!)
+     //  let request = URLRequest(url: URL(string: "https://www.suntory.co.jp/wine/nihon/wine-cellar/list_tominooka.html#lwt")!)
     let request = URLRequest(url: URL(string: "www.google.co.jp")!)
- */
+*/
     
     /// View Life Cycle
     override func viewDidLoad() {
@@ -117,6 +132,58 @@ extension ViewController {
         // Run the view's session
         sceneView.session.run(configuration, options: [.resetTracking, .removeExistingAnchors])
     }
+    
+    //ワインの情報を表示するNodeを生成
+    func addInfoNode(node: SCNNode, imageSize: CGSize){
+
+        let infoPlane = SCNPlane(width: CGFloat(imageSize.width * 5), height: CGFloat(imageSize.height * 1.2))
+        //テスクチャーとしてAboutシーンを設定
+        infoPlane.firstMaterial?.diffuse.contents = UIImage(named: "art.scnassets/koutetsu100info.png")
+        //テクスチャーのサイズ調整
+        infoPlane.firstMaterial?.diffuse.contentsTransform = SCNMatrix4Translate(SCNMatrix4MakeScale(1, -1, 1), 0, 1, 0)
+        //About用ノード生成
+        let infoNode = SCNNode(geometry: infoPlane)
+        infoNode.name =  "infoObj"
+        //trueにすると表面のみ表示する
+        infoNode.geometry?.firstMaterial?.isDoubleSided = true
+        //またオイラー角で回転
+        infoNode.eulerAngles.x = .pi / 2
+        //原点を設定
+        infoNode.position = SCNVector3Zero
+        //気持ち透明にしてみる
+        infoNode.opacity = 0.9
+        //Aboutノードをシーンノードのチャイルドノードに追加
+        node.addChildNode(infoNode)
+    }
+    
+    //ムービーを表示するNodeを生成
+    func addMovieNode(node:SCNNode,imageSize:CGSize){
+        // MovieのSpriteKitのシーンを生成。用意されているMovieのシーンを利用
+        //let movieSpriteKitScene = SKScene(fileNamed: "Movie")
+        
+        //movieSpriteKitScene?.isPaused = false
+        //ここでMovie用の平面生成。サイズはリファレンスイメージよりちょっと大きめ
+        let moviePlane = SCNPlane(width: CGFloat(imageSize.width * 4), height: CGFloat(imageSize.height * 1))
+        //テスクチャーとしてMovieシーンを設定
+        moviePlane.firstMaterial?.diffuse.contents = self.videoPlayer
+        self.videoPlayer.play()
+        //テクスチャーのサイズ調整
+        moviePlane.firstMaterial?.diffuse.contentsTransform = SCNMatrix4Translate(SCNMatrix4MakeScale(1, -1, 1), 0, 1, 0)
+        //Movie用ノード生成
+        let movieNode = SCNNode(geometry: moviePlane)
+        movieNode.name = "movieObj"
+        //trueにすると表面のみ表示する
+        movieNode.geometry?.firstMaterial?.isDoubleSided = true
+        //またオイラー角で回転
+        movieNode.eulerAngles.x = .pi / 2
+        //原点を設定
+        movieNode.position = SCNVector3Zero
+        //気持ち透明にしてみる
+        movieNode.opacity = 0.95
+        //Movieノードをシーンノードのチャイルドノードに追加
+        node.addChildNode(movieNode)
+    }
+    
 }
 
 // MARK: - UIButton Action(s)
@@ -135,9 +202,10 @@ extension ViewController: ARSCNViewDelegate {
         // ここでは情報を付与するロジックを追加
         // SpriteKit（２Dを扱う）とSceneKit(3Dを扱う）を利用。紛らわしい。
         //ここのイメージアンカーにはアセットカタログに配置した参照イメージのプロパティが含まれている
-        if let imageAnchor =  anchor as? ARImageAnchor {
+        imageAnchor =  anchor as? ARImageAnchor
+        if  imageAnchor ==  anchor as? ARImageAnchor {
             
-            /*
+/*
             // create a web view
             let tvPlane = SCNPlane(width: 0.1, height: 0.1)
             tvPlane.firstMaterial?.diffuse.contents = self.webView
@@ -162,11 +230,11 @@ extension ViewController: ARSCNViewDelegate {
             //Aboutノードにアクションを設定して実行
             tvPlaneNode.runAction(move4Action, completionHandler: {
             })
-            */
+*/
             
             //イメージサイズをリファレンスイメージのフィジカルサイズから取得
             let imageSize = imageAnchor.referenceImage.physicalSize
-          /*
+/*
             //SceneKitで平面を生成。サイズを取得したイメージのプロパティのサイズを設定
             //let plane = SCNPlane(width: CGFloat(imageSize.width), height: CGFloat(imageSize.height))
             let plane = SCNPlane(width: CGFloat(imageSize.width * 2.5), height: CGFloat(imageSize.height * 1.2))
@@ -186,109 +254,14 @@ extension ViewController: ARSCNViewDelegate {
                 
                 imageHightingAnimationNode.opacity = 0
  */
-        
                 // InfoのSpriteKitのシーンを生成。用意されているAboutのシーンを利用
-            /*
+/*
                 let infoSpriteKitScene = SKScene(fileNamed: "About")
                 
                 infoSpriteKitScene?.isPaused = false
  */
                 //ここでAbout用の平面生成。サイズはリファレンスイメージよりちょっと大きめ
-                let infoPlane = SCNPlane(width: CGFloat(imageSize.width * 5), height: CGFloat(imageSize.height * 1.2))
-                //テスクチャーとしてAboutシーンを設定
-                infoPlane.firstMaterial?.diffuse.contents = UIImage(named: "art.scnassets/koutetsu100info.png")
-                //テクスチャーのサイズ調整
-                infoPlane.firstMaterial?.diffuse.contentsTransform = SCNMatrix4Translate(SCNMatrix4MakeScale(1, -1, 1), 0, 1, 0)
-                //About用ノード生成
-                let infoUsNode = SCNNode(geometry: infoPlane)
-                //trueにすると表面のみ表示する
-                infoUsNode.geometry?.firstMaterial?.isDoubleSided = true
-                //またオイラー角で回転
-                infoUsNode.eulerAngles.x = .pi / 2
-                //原点を設定
-                infoUsNode.position = SCNVector3Zero
-                //気持ち透明にしてみる
-                infoUsNode.opacity = 0.8
-                //Aboutノードをシーンノードのチャイルドノードに追加
-                node.addChildNode(infoUsNode)
-                //アクション開始
-                //アクションを設定。byは現在位置から指定分だけ移動に使用。
-            /*
-                //0.8秒でX軸方向に。0.25m移動する
-                let move1Action = SCNAction.move(by: SCNVector3(-0.1, 0, 0), duration: 0.8)
-                
-                infoUsNode.runAction(move1Action, completionHandler: {
-                })
- */
-        
-                
-        /*
-                
-                ///////////////////////////////////////////////////////////
-                // AboutのSpriteKitのシーンを生成。用意されているAboutのシーンを利用
-                let aboutSpriteKitScene = SKScene(fileNamed: "About2")
-                
-                aboutSpriteKitScene?.isPaused = false
-                //ここでAbout用の平面生成。サイズはリファレンスイメージよりちょっと大きめ
-                let aboutUsPlane = SCNPlane(width: CGFloat(imageSize.width * 3), height: CGFloat(imageSize.height * 1.2))
-                //テスクチャーとしてAboutシーンを設定
-                aboutUsPlane.firstMaterial?.diffuse.contents = aboutSpriteKitScene
-                //テクスチャーのサイズ調整
-                aboutUsPlane.firstMaterial?.diffuse.contentsTransform = SCNMatrix4Translate(SCNMatrix4MakeScale(1, -1, 1), 0, 1, 0)
-                //About用ノード生成
-                let aboutUsNode = SCNNode(geometry: aboutUsPlane)
-                //trueにすると表面のみ表示する
-                aboutUsNode.geometry?.firstMaterial?.isDoubleSided = true
-                //またオイラー角で回転
-                aboutUsNode.eulerAngles.x = -.pi / 2
-                //原点を設定
-                 aboutUsNode.position = SCNVector3Zero
-                //気持ち透明にしてみる
-                aboutUsNode.opacity = 0.8
-                //Aboutノードをシーンノードのチャイルドノードに追加
-                node.addChildNode(aboutUsNode)
-                //アクション開始
-                //アクションを設定。byは現在位置から指定分だけ移動に使用。
-                //0.8秒でX軸方向に。0.25m移動する
-                let move2Action = SCNAction.move(by: SCNVector3(0.1, 0, 0), duration: 0.8)
-                //Aboutノードにアクションを設定して実行
-                aboutUsNode.runAction(move2Action, completionHandler: {
-                })
- 
-        */
-        /*
-                ///////////////////////////////////////////////////////////
-                // MovieのSpriteKitのシーンを生成。用意されているMovieのシーンを利用
-                let movieSpriteKitScene = SKScene(fileNamed: "Movie")
-                
-                movieSpriteKitScene?.isPaused = false
-                //ここでMovie用の平面生成。サイズはリファレンスイメージよりちょっと大きめ
-                let moviePlane = SCNPlane(width: CGFloat(imageSize.width * 4), height: CGFloat(imageSize.height * 1))
-                //テスクチャーとしてMovieシーンを設定
-                moviePlane.firstMaterial?.diffuse.contents = self.videoPlayer
-                self.videoPlayer.play()
-                //テクスチャーのサイズ調整
-                moviePlane.firstMaterial?.diffuse.contentsTransform = SCNMatrix4Translate(SCNMatrix4MakeScale(1, -1, 1), 0, 1, 0)
-                //Movie用ノード生成
-                let movieNode = SCNNode(geometry: moviePlane)
-                //trueにすると表面のみ表示する
-                movieNode.geometry?.firstMaterial?.isDoubleSided = true
-                //またオイラー角で回転
-                movieNode.eulerAngles.x = .pi / 2
-                //原点を設定
-                movieNode.position = SCNVector3Zero
-                //気持ち透明にしてみる
-                movieNode.opacity = 0.95
-                //Movieノードをシーンノードのチャイルドノードに追加
-                node.addChildNode(movieNode)
-                //アクション開始
-                //アクションを設定。byは現在位置から指定分だけ移動に使用。
-                //0.8秒でZ軸方向に。0.085m移動する
-                let move3Action = SCNAction.move(by: SCNVector3(0, 0, 0), duration: 0.8)
-                //Aboutノードにアクションを設定して実行
-                movieNode.runAction(move3Action, completionHandler: {
-                })
-            */
+                addMovieNode(node: node, imageSize: imageSize)
                 // shop_buttonのSpriteKitのシーンを生成。用意されているAboutのシーンを利用
                 let shopButtonSpriteKitScene = SKScene(fileNamed: "shop_button")
             
@@ -301,7 +274,7 @@ extension ViewController: ARSCNViewDelegate {
                 //テクスチャーのサイズ調整
                 shopButtonlane.firstMaterial?.diffuse.contentsTransform = SCNMatrix4Translate(SCNMatrix4MakeScale(1, -1, 1), 0, 1, 0)
                 //About用ノード生成
-           //     let shopButtonNode = SCNNode(geometry: shopButtonlane)
+                //let shopButtonNode = SCNNode(geometry: shopButtonlane)
                 let shopButtonScene = SCNScene(named: "art.scnassets/shop_button.scn")!
             
                 let shopButtonNode = shopButtonScene.rootNode.childNode(withName: "shopButton",recursively: true)
