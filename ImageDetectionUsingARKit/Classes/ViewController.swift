@@ -17,13 +17,17 @@ class ViewController: UIViewController {
     /// IBOutlet(s)
     @IBOutlet var sceneView: ARSCNView!
     
+    var imageAnchor: ARImageAnchor!
+    var infoNode: SCNNode!
+    var movieNode: SCNNode!
+    
     @IBAction func tap(_ sender: UITapGestureRecognizer) {
-        let sceneView = sender.view as! ARSCNView
+      //  let sceneViewSender = sender.view as! ARSCNView
         let touchLocation = sender.location(in: sceneView)
         let hitResults = sceneView.hitTest(touchLocation)
         
         //以下、まともに動かず。
-        let node = self.sceneView.scene.rootNode
+       // let node = sceneView.scene.rootNode
         let imageSize = imageAnchor.referenceImage.physicalSize
         
         if !hitResults.isEmpty{
@@ -37,37 +41,42 @@ class ViewController: UIViewController {
             }
             else if hitNode?.node.name == "movieButton"
             {
-                let theNode = node.childNode(withName: "infoObj", recursively: true)
-                theNode?.removeFromParentNode()//ここまでは機能している
-                addMovieNode(node: node, imageSize: imageSize)
+                
+                //let theNode = sceneView.scene.rootNode.childNode(withName: "infoObj", recursively: true)
+                //theNode?.removeFromParentNode()//ここまでは機能している
+                //infoNode.removeFromParentNode()
+                
+                let moviePlane = SCNPlane(width: CGFloat(imageSize.width * 4), height: CGFloat(imageSize.height * 1))
+                //テスクチャーとしてMovieシーンを設定
+                moviePlane.firstMaterial?.diffuse.contents = self.videoPlayer
+                self.videoPlayer.play()
+                //テクスチャーのサイズ調整
+                moviePlane.firstMaterial?.diffuse.contentsTransform = SCNMatrix4Translate(SCNMatrix4MakeScale(1, -1, 1), 0, 1, 0)
+                //Movie用ノード生成
+                movieNode = SCNNode(geometry: moviePlane)
+                movieNode.name = "movieObj"
+                //trueにすると表面のみ表示する
+                movieNode.geometry?.firstMaterial?.isDoubleSided = true
+                //またオイラー角で回転
+                movieNode.eulerAngles.x = .pi / 2
+                //原点を設定
+                movieNode.position = SCNVector3Zero
+                //気持ち透明にしてみる
+                movieNode.opacity = 0.95
+                sceneView.scene.rootNode.addChildNode(movieNode!)
+                //addMovieNode(node: sceneView.scene.rootNode, imageSize: imageSize)
             }
             else if hitNode?.node.name == "infoButton"
             {
-                let theNode = node.childNode(withName: "movieObj", recursively: true)
-                theNode?.removeFromParentNode()//ここまでは機能している
-                addInfoNode(node: node, imageSize: imageSize)
+                
+                let theNode = sceneView.scene.rootNode.childNode(withName: "movieObj", recursively: true)
+                self.videoPlayer.pause()
+                theNode?.opacity = 0.1
+             //   theNode?.removeFromParentNode()//ここまでは機能している
+              //  addInfoNode(node: sceneView.scene.rootNode, imageSize: imageSize)
+                
             }
         }
-    }
-
-    var imageAnchor: ARImageAnchor!
-
-    /// Variable Declaration(s)
-    var imageHighlightAction: SCNAction {
-        return .sequence([
-            //0.25秒一時停止
-            .wait(duration: 0.25),
-            //0.25秒かけて85％の透明度にする
-            .fadeOpacity(to: 0.85, duration: 0.25),
-            //0.25秒かけて15％の透明度にする
-            .fadeOpacity(to: 0.15, duration: 0.25),
-            //0.25秒かけて85％の透明度にする
-            .fadeOpacity(to: 0.85, duration: 0.25),
-            //0.5秒かけて透明度を0にして見えなくする
-            .fadeOut(duration: 0.5),
-            //このアクションに紐付いているノードを削除する
-            .removeFromParentNode()
-            ])
     }
     
     let videoPlayer:AVPlayer = {
@@ -95,7 +104,6 @@ class ViewController: UIViewController {
         webView.scalesPageToFit = true
         webView.loadRequest(request)
         */
-
         prepareUI()
     }
     
@@ -142,7 +150,7 @@ extension ViewController {
         //テクスチャーのサイズ調整
         infoPlane.firstMaterial?.diffuse.contentsTransform = SCNMatrix4Translate(SCNMatrix4MakeScale(1, -1, 1), 0, 1, 0)
         //About用ノード生成
-        let infoNode = SCNNode(geometry: infoPlane)
+        infoNode = SCNNode(geometry: infoPlane)
         infoNode.name =  "infoObj"
         //trueにすると表面のみ表示する
         infoNode.geometry?.firstMaterial?.isDoubleSided = true
@@ -153,6 +161,7 @@ extension ViewController {
         //気持ち透明にしてみる
         infoNode.opacity = 0.9
         //Aboutノードをシーンノードのチャイルドノードに追加
+        //sceneView.scene.rootNode.addChildNode(infoNode)
         node.addChildNode(infoNode)
     }
     
@@ -170,7 +179,7 @@ extension ViewController {
         //テクスチャーのサイズ調整
         moviePlane.firstMaterial?.diffuse.contentsTransform = SCNMatrix4Translate(SCNMatrix4MakeScale(1, -1, 1), 0, 1, 0)
         //Movie用ノード生成
-        let movieNode = SCNNode(geometry: moviePlane)
+        movieNode = SCNNode(geometry: moviePlane)
         movieNode.name = "movieObj"
         //trueにすると表面のみ表示する
         movieNode.geometry?.firstMaterial?.isDoubleSided = true
@@ -181,6 +190,7 @@ extension ViewController {
         //気持ち透明にしてみる
         movieNode.opacity = 0.95
         //Movieノードをシーンノードのチャイルドノードに追加
+        //sceneView.scene.rootNode.addChildNode(movieNode)
         node.addChildNode(movieNode)
     }
     
@@ -261,7 +271,7 @@ extension ViewController: ARSCNViewDelegate {
                 infoSpriteKitScene?.isPaused = false
  */
                 //ここでAbout用の平面生成。サイズはリファレンスイメージよりちょっと大きめ
-                addMovieNode(node: node, imageSize: imageSize)
+                addInfoNode(node: node, imageSize: imageSize)
                 // shop_buttonのSpriteKitのシーンを生成。用意されているAboutのシーンを利用
                 let shopButtonSpriteKitScene = SKScene(fileNamed: "shop_button")
             
