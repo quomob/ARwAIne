@@ -14,6 +14,8 @@
 		03469AD620E0C0A600A949BD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03469AD520E0C0A600A949BD /* Assets.xcassets */; };
 		03469AD920E0C0A600A949BD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03469AD720E0C0A600A949BD /* LaunchScreen.storyboard */; };
 		890EEE92219EA9A000055A6D /* koutetsu100.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 890EEE91219EA9A000055A6D /* koutetsu100.jpg */; };
+		8915297621A66D11008B8EF0 /* chateauBrillantMur_white_Label.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8915297521A66D11008B8EF0 /* chateauBrillantMur_white_Label.jpg */; };
+		8915297821A66D20008B8EF0 /* chateauBrillantMur_white.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8915297721A66D20008B8EF0 /* chateauBrillantMur_white.jpg */; };
 		89639C7C219CF55500A34597 /* sadoya_logo_120.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 89639C7B219CF55500A34597 /* sadoya_logo_120.jpg */; };
 		89639C84219CF64B00A34597 /* sadoya_logo_1024.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 89639C80219CF64A00A34597 /* sadoya_logo_1024.jpg */; };
 		89639C88219CF67D00A34597 /* koutetsu100_label .jpg in Resources */ = {isa = PBXBuildFile; fileRef = 89639C87219CF67D00A34597 /* koutetsu100_label .jpg */; };
@@ -48,6 +50,8 @@
 		03469AD820E0C0A600A949BD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		03469ADA20E0C0A600A949BD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		890EEE91219EA9A000055A6D /* koutetsu100.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = koutetsu100.jpg; sourceTree = "<group>"; };
+		8915297521A66D11008B8EF0 /* chateauBrillantMur_white_Label.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = chateauBrillantMur_white_Label.jpg; sourceTree = "<group>"; };
+		8915297721A66D20008B8EF0 /* chateauBrillantMur_white.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = chateauBrillantMur_white.jpg; sourceTree = "<group>"; };
 		89639C7B219CF55500A34597 /* sadoya_logo_120.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sadoya_logo_120.jpg; sourceTree = "<group>"; };
 		89639C80219CF64A00A34597 /* sadoya_logo_1024.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sadoya_logo_1024.jpg; sourceTree = "<group>"; };
 		89639C87219CF67D00A34597 /* koutetsu100_label .jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "koutetsu100_label .jpg"; sourceTree = "<group>"; };
@@ -136,6 +140,8 @@
 				890EEE91219EA9A000055A6D /* koutetsu100.jpg */,
 				89D76AD02138BB0100DB6C43 /* sakeinfo.png */,
 				89639C87219CF67D00A34597 /* koutetsu100_label .jpg */,
+				8915297521A66D11008B8EF0 /* chateauBrillantMur_white_Label.jpg */,
+				8915297721A66D20008B8EF0 /* chateauBrillantMur_white.jpg */,
 				89639C7B219CF55500A34597 /* sadoya_logo_120.jpg */,
 				89705125219B9F4F00D502EA /* splash_sadoya.png */,
 				89705127219B9FBA00D502EA /* splash_sadoya_landscape.png */,
@@ -227,8 +233,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				89EF6E39219A87210023EEEA /* sadoya_logo_icon.jpeg in Resources */,
+				8915297821A66D20008B8EF0 /* chateauBrillantMur_white.jpg in Resources */,
 				89C20AD5217D9977002BF883 /* Movie.sks in Resources */,
 				89E602C0219A8FCF00B40BD5 /* if_video_1054941.png in Resources */,
+				8915297621A66D11008B8EF0 /* chateauBrillantMur_white_Label.jpg in Resources */,
 				89E602C1219A8FCF00B40BD5 /* if_cart_1055098.png in Resources */,
 				89F7797A217970CD00B6122B /* About2.sks in Resources */,
 				89705126219B9F4F00D502EA /* splash_sadoya.png in Resources */,

@@ -30,7 +30,9 @@ class ViewController: UIViewController {
       //  let sceneViewSender = sender.view as! ARSCNViews
         let touchLocation = sender.location(in: sceneView)
         let hitResults = sceneView.hitTest(touchLocation)
+        //拡大
         let buttonAction1 = SCNAction.scale(by: 4, duration: 0.25)
+        //縮小
         let buttonAction2 = SCNAction.scale(by: 0.25, duration: 0.25)
         
        // let node = sceneView.scene.rootNode
@@ -51,12 +53,15 @@ class ViewController: UIViewController {
                 UIApplication.shared.open(url!)
             }
             //ムービーボタンが押下された場合ムービーを再生
+            //メインプレーンをムービープレーンに変更
             else if hitNode?.node.name == "movieButton"
             {
                 self.videoPlayer.play()
                 mainPlaneNode.removeFromParentNode()
                 mainPlaneNode = moviePlaneNode
             }
+            //Infoボタンが押された場合ムービーを一時停止
+            //メインプレーンをInfoプレーンに変更
             else if hitNode?.node.name == "infoButton"
             {
                 self.videoPlayer.pause()
@@ -199,9 +204,22 @@ extension ViewController: ARSCNViewDelegate {
         //ここのイメージアンカーにはアセットカタログに配置した参照イメージのプロパティが含まれている
         imageAnchor =  anchor as? ARImageAnchor
         if  imageAnchor ==  anchor as? ARImageAnchor {
-        
+    
             //イメージサイズをリファレンスイメージのフィジカルサイズから取得
-          //  let imageSize = imageAnchor.referenceImage.physicalSize
+            //  let imageSize = imageAnchor.referenceImage.physicalSize
+            //認識したラベルによってInfoPlaneのテクスチャを切り替える
+            let infoPlane = SCNPlane(width: CGFloat(0.12), height: CGFloat(0.07))
+            switch imageAnchor.referenceImage.name {
+            case "koutetsu100_label":
+                infoPlane.firstMaterial?.diffuse.contents = UIImage(named: "koutetsu100info.png")
+                infoPlane.firstMaterial?.diffuse.contentsTransform = SCNMatrix4Translate(SCNMatrix4MakeScale(1, -1, 1), 0, 1, 0)
+                infoPlaneNode = SCNNode(geometry: infoPlane)
+            case "chateauBrillantMur_white_Label":
+                infoPlane.firstMaterial?.diffuse.contents = UIImage(named: "chateauBrillantMur_whiteInfo.png")
+                infoPlane.firstMaterial?.diffuse.contentsTransform = SCNMatrix4Translate(SCNMatrix4MakeScale(1, -1, 1), 0, 1, 0)
+                infoPlaneNode = SCNNode(geometry: infoPlane)
+            default: break
+            }
 
             node.addChildNode(mainPlaneNode!)
             //Aboutノードをシーンノードのチャイルドノードに追加
@@ -212,7 +230,7 @@ extension ViewController: ARSCNViewDelegate {
             //mainPlaneアクション開始
             //2秒でフェードインする
             mainPlaneNode.opacity = 0
-            let action = SCNAction.fadeIn(duration: 2)
+            let action = SCNAction.fadeIn(duration: 1)
             mainPlaneNode.runAction(action)
  
         } else {
