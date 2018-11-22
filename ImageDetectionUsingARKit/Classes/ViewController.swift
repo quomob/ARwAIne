@@ -30,21 +30,27 @@ class ViewController: UIViewController {
       //  let sceneViewSender = sender.view as! ARSCNViews
         let touchLocation = sender.location(in: sceneView)
         let hitResults = sceneView.hitTest(touchLocation)
+        let buttonAction1 = SCNAction.scale(by: 4, duration: 0.25)
+        let buttonAction2 = SCNAction.scale(by: 0.25, duration: 0.25)
         
-       
-        
-        //以下、まともに動かず。
        // let node = sceneView.scene.rootNode
         if !hitResults.isEmpty{
             let hitNode = hitResults.first
+            //ボタンが押されたらアクションを実行
+            hitNode?.node.runAction(
+                SCNAction.group([
+                    buttonAction1,
+                    buttonAction2
+                    ])
+            )
             //ショップボタンがこされた場合Safariを起動しオンラインショッピングのサイトへ遷移
             if hitNode?.node.name == "shopButton"
             {
                 self.videoPlayer.pause()
                 let url = URL(string: "http://sadoya-wine.com/fs/sadoya/red_wine/KT1675R")
                 UIApplication.shared.open(url!)
-            //ムービーボタンが押下された場合ムービーを再生
             }
+            //ムービーボタンが押下された場合ムービーを再生
             else if hitNode?.node.name == "movieButton"
             {
                 self.videoPlayer.play()
@@ -58,6 +64,7 @@ class ViewController: UIViewController {
                 mainPlaneNode = infoPlaneNode
             }
         }
+         //ボタンをトリガーに一旦セッションを削除
          sceneView.session.remove(anchor: imageAnchor)
     }
     
@@ -92,7 +99,7 @@ class ViewController: UIViewController {
         infoPlaneNode = shopButtonScene.rootNode.childNode(withName: "infoPlane", recursively: true)
         infoPlaneNode?.name = "infoPlane"
         
-        let moviePlane = SCNPlane(width: CGFloat(0.1), height: CGFloat(0.06))
+        let moviePlane = SCNPlane(width: CGFloat(0.12), height: CGFloat(0.07))
         //テスクチャーとしてMovieシーンを設定
         moviePlane.firstMaterial?.diffuse.contents = self.videoPlayer
         //テクスチャーのサイズ調整
@@ -170,60 +177,6 @@ extension ViewController {
         // Run the view's session
         sceneView.session.run(configuration, options: [.resetTracking, .removeExistingAnchors])
     }
-    
-    //ワインの情報を表示するNodeを生成
-    func addInfoNode(node: SCNNode, imageSize: CGSize){
-
-        let infoPlane = SCNPlane(width: CGFloat(imageSize.width * 5), height: CGFloat(imageSize.height * 1.2))
-        //テスクチャーとしてAboutシーンを設定
-        infoPlane.firstMaterial?.diffuse.contents = UIImage(named: "art.scnassets/koutetsu100info.png")
-        //テクスチャーのサイズ調整
-        infoPlane.firstMaterial?.diffuse.contentsTransform = SCNMatrix4Translate(SCNMatrix4MakeScale(1, -1, 1), 0, 1, 0)
-        //About用ノード生成
-        infoPlaneNode = SCNNode(geometry: infoPlane)
-        infoPlaneNode.name =  "infoObj"
-        //trueにすると表面のみ表示する
-        infoPlaneNode.geometry?.firstMaterial?.isDoubleSided = true
-        //またオイラー角で回転
-        infoPlaneNode.eulerAngles.x = .pi / 2
-        //原点を設定
-        infoPlaneNode.position = SCNVector3Zero
-        //気持ち透明にしてみる
-        infoPlaneNode.opacity = 0.9
-        //Aboutノードをシーンノードのチャイルドノードに追加
-        //sceneView.scene.rootNode.addChildNode(infoNode)
-        node.addChildNode(infoPlaneNode)
-    }
-    
-    //ムービーを表示するNodeを生成
-    func addMovieNode(node:SCNNode,imageSize:CGSize){
-        // MovieのSpriteKitのシーンを生成。用意されているMovieのシーンを利用
-        //let movieSpriteKitScene = SKScene(fileNamed: "Movie")
-        
-        //movieSpriteKitScene?.isPaused = false
-        //ここでMovie用の平面生成。サイズはリファレンスイメージよりちょっと大きめ
-        let moviePlane = SCNPlane(width: CGFloat(imageSize.width * 4), height: CGFloat(imageSize.height * 1))
-        //テスクチャーとしてMovieシーンを設定
-        moviePlane.firstMaterial?.diffuse.contents = self.videoPlayer
-        self.videoPlayer.play()
-        //テクスチャーのサイズ調整
-        moviePlane.firstMaterial?.diffuse.contentsTransform = SCNMatrix4Translate(SCNMatrix4MakeScale(1, -1, 1), 0, 1, 0)
-        //Movie用ノード生成
-        moviePlaneNode = SCNNode(geometry: moviePlane)
-        moviePlaneNode.name = "movieObj"
-        //trueにすると表面のみ表示する
-        moviePlaneNode.geometry?.firstMaterial?.isDoubleSided = true
-        //またオイラー角で回転
-        moviePlaneNode.eulerAngles.x = .pi / 2
-        //原点を設定
-        moviePlaneNode.position = SCNVector3Zero
-        //気持ち透明にしてみる
-        moviePlaneNode.opacity = 0.95
-        //Movieノードをシーンノードのチャイルドノードに追加
-        //sceneView.scene.rootNode.addChildNode(movieNode)
-        node.addChildNode(moviePlaneNode)
-    }
-    
 }
 
 // MARK: - UIButton Action(s)
@@ -250,44 +203,23 @@ extension ViewController: ARSCNViewDelegate {
             //イメージサイズをリファレンスイメージのフィジカルサイズから取得
           //  let imageSize = imageAnchor.referenceImage.physicalSize
 
-            //ここでAbout用の平面生成。サイズはリファレンスイメージよりちょっと大きめ
- //           addInfoNode(node: node, imageSize: imageSize)
             node.addChildNode(mainPlaneNode!)
             //Aboutノードをシーンノードのチャイルドノードに追加
             node.addChildNode(shopButtonNode!)
             node.addChildNode(movieButtonNode!)
             node.addChildNode(infoButtonNode!)
-            //アクション開始
-            //アクションを設定。byは現在位置から指定分だけ移動に使用。
-            //0.8秒でX軸方向に。0.25m移動する
-            /*
-            let move4Action = SCNAction.move(by: SCNVector3(-0.03, 0, 0.055), duration: 0.8)
-            let move5Action = SCNAction.move(by: SCNVector3(0, 0, 0.055), duration: 0.8)
-            let move6Action = SCNAction.move(by: SCNVector3(0.03, 0, 0.055), duration: 0.8)
-            //Aboutノードにアクションを設定して実行
-            infoButtonNode!.runAction(move4Action, completionHandler: {
-            })
-            movieButtonNode!.runAction(move5Action, completionHandler: {
-            })
-            shopButtonNode!.runAction(move6Action, completionHandler: {
-            })
-            */
             
-            //sceneView.session.remove(anchor: anchor)
+            //mainPlaneアクション開始
+            //2秒でフェードインする
+            mainPlaneNode.opacity = 0
+            let action = SCNAction.fadeIn(duration: 2)
+            mainPlaneNode.runAction(action)
  
         } else {
             print("Error: Failed to get ARImageAnchor")
         }
     }
-/*
-    func renderer(_ renderer: SCNSceneRenderer, didUpdate node: SCNNode, for anchor: ARAnchor) {
-     //   node.addChildNode(moviePlaneNode!)
-      //  node.
-        shopButtonScene.rootNode.renderingOrder()
-    }
- */
 
-    
     func session(_ session: ARSession, didFailWithError error: Error) {
         // Present an error message to the user
         print("Error didFailWithError: \(error.localizedDescription)")
