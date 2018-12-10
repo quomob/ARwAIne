@@ -17,6 +17,7 @@ class ViewController: UIViewController {
     /// IBOutlet(s)
     @IBOutlet var sceneView: ARSCNView!
     
+    //変数定義
     var imageAnchor: ARImageAnchor!
     var shopButtonScene: SCNScene!
     var shopButtonNode: SCNNode!
@@ -26,19 +27,21 @@ class ViewController: UIViewController {
     var moviePlaneNode: SCNNode!
     var mainPlaneNode: SCNNode!
     
+    //オブジェクトがタッチされた時の処理
     @IBAction func tap(_ sender: UITapGestureRecognizer) {
       //  let sceneViewSender = sender.view as! ARSCNViews
         let touchLocation = sender.location(in: sceneView)
         let hitResults = sceneView.hitTest(touchLocation)
         //拡大
-        let buttonAction1 = SCNAction.scale(by: 4, duration: 0.25)
+        let buttonAction1 = SCNAction.scale(by: 4, duration: 0.3)
         //縮小
-        let buttonAction2 = SCNAction.scale(by: 0.25, duration: 0.25)
+        let buttonAction2 = SCNAction.scale(by: 0.25, duration: 0.3)
         
        // let node = sceneView.scene.rootNode
         if !hitResults.isEmpty{
             let hitNode = hitResults.first
             //ボタンが押されたらアクションを実行
+            //ボタンを一瞬大きくして元のサイズに戻す
             hitNode?.node.runAction(
                 SCNAction.group([
                     buttonAction1,
@@ -69,10 +72,12 @@ class ViewController: UIViewController {
                 mainPlaneNode = infoPlaneNode
             }
         }
-         //ボタンをトリガーに一旦セッションを削除
+         //ボタン押下をトリガーに一旦セッションを削除
+         //これで再度レンダリング処理が実行される
          sceneView.session.remove(anchor: imageAnchor)
     }
     
+    //動画プレイヤー定義
     let videoPlayer:AVPlayer = {
       //  let url = URL(string: "https://youtu.be/_D2_lTmG-6w")
         guard let url = Bundle.main.url(forResource:"sadoya",withExtension:"mp4",subdirectory:"art.scnassets")
@@ -84,6 +89,7 @@ class ViewController: UIViewController {
     }()
     
 /*
+    //Web画面定義
     let webView:UIWebView = UIWebView(frame : CGRect(x: 0, y: 0, width: 320, height: 240))
      //  let request = URLRequest(url: URL(string: "https://www.suntory.co.jp/wine/nihon/wine-cellar/list_tominooka.html#lwt")!)
     let request = URLRequest(url: URL(string: "www.google.co.jp")!)
@@ -124,6 +130,7 @@ class ViewController: UIViewController {
         movieButtonNode!.eulerAngles.x = -.pi / 2
         infoButtonNode!.eulerAngles.x = -.pi / 2
         infoPlaneNode!.eulerAngles.x = -.pi / 2
+        //なぜかMovieだけ逆回転
         moviePlaneNode!.eulerAngles.x = .pi / 2
         //原点を設定
         shopButtonNode!.position = SCNVector3(0.03, 0, 0.055)
@@ -140,9 +147,9 @@ class ViewController: UIViewController {
         
         //初期表示には情報ノードを設定
         mainPlaneNode = infoPlaneNode
-    
+
         /*
-        // create a web view
+        //Webページ生成
         webView.scalesPageToFit = true
         webView.loadRequest(request)
         */
@@ -170,6 +177,7 @@ extension ViewController {
         sceneView.delegate = self
     }
     
+    //画像認識処理
     func configureARImageTracking() {
         // Create a session configuration
         let configuration = ARImageTrackingConfiguration()
@@ -195,7 +203,8 @@ extension ViewController {
 // MARK: - ARSCNViewDelegate
 extension ViewController: ARSCNViewDelegate {
 
-    //初期ノード配置
+    //初期レンダリング処理
+    //イメージを認識したときに実行される
     func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
         print("didAdd")
         /// Casting down ARAnchor to `ARImageAnchor`.
@@ -228,7 +237,7 @@ extension ViewController: ARSCNViewDelegate {
             node.addChildNode(infoButtonNode!)
             
             //mainPlaneアクション開始
-            //2秒でフェードインする
+            //1秒でフェードインする
             mainPlaneNode.opacity = 0
             let action = SCNAction.fadeIn(duration: 1)
             mainPlaneNode.runAction(action)
