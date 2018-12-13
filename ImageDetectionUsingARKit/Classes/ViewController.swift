@@ -72,16 +72,16 @@ class ViewController: UIViewController {
                     shopUrl = URL(string: "https://mannswine-shop.com/SHOP/561539.html?_ga=2.38526307.1333330064.1544686411-109063759.1544686411")
                 }
                 else if labelName == "kuraonooto_label"{
-                    shopUrl = URL(string: "")
+                    shopUrl = URL(string: "https://fujiclairwine.jp/archives/509/")
                 }
                 else if labelName == "italico_label"{
-                    shopUrl = URL(string: "")
+                    shopUrl = URL(string: "https://cave-online.suntory-service.co.jp/shopdetail/000000003317/")
                 }
                 else if labelName == "chateauBrillantMur_white_Label" {
-                    shopUrl = URL(string: "")
+                    shopUrl = URL(string: "http://sadoya-wine.com/fs/sadoya/cbmw")
                 }
                 else if labelName == "pipa_label"{
-                    shopUrl = URL(string: "")
+                    shopUrl = URL(string: "http://www.katsunuma-winery.com/products/")
                 }
                 UIApplication.shared.open(shopUrl)
             }
