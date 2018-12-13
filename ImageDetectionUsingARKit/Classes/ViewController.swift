@@ -18,7 +18,7 @@ class ViewController: UIViewController {
     
     //変数定義
     var imageAnchor: ARImageAnchor!
-    
+    var labelName:String!
     var shopButtonScene: SCNScene!
     //各種ボタン用ノード
     var shopButtonNode: SCNNode!
@@ -54,6 +54,7 @@ class ViewController: UIViewController {
         // let node = sceneView.scene.rootNode
         if !hitResults.isEmpty{
             let hitNode = hitResults.first
+            print("hitnode is " + (hitNode?.node.name)!)
             //ボタンが押されたらアクションを実行
             //ボタンを一瞬大きくして元のサイズに戻す
             hitNode?.node.runAction(
@@ -66,7 +67,22 @@ class ViewController: UIViewController {
             if hitNode?.node.name == "shopButton"
             {
                 self.videoPlayer.pause()
-                shopUrl = URL(string: "http://sadoya-wine.com/fs/sadoya/red_wine/KT1675R")
+                shopUrl = URL(string: "")
+                if labelName == "koubonoawa_label"{
+                    shopUrl = URL(string: "https://mannswine-shop.com/SHOP/561539.html?_ga=2.38526307.1333330064.1544686411-109063759.1544686411")
+                }
+                else if labelName == "kuraonooto_label"{
+                    shopUrl = URL(string: "")
+                }
+                else if labelName == "italico_label"{
+                    shopUrl = URL(string: "")
+                }
+                else if labelName == "chateauBrillantMur_white_Label" {
+                    shopUrl = URL(string: "")
+                }
+                else if labelName == "pipa_label"{
+                    shopUrl = URL(string: "")
+                }
                 UIApplication.shared.open(shopUrl)
             }
                 //ムービーボタンが押下された場合ムービーを再生
@@ -91,6 +107,15 @@ class ViewController: UIViewController {
             {
                 self.videoPlayer.pause()
             }
+            //暫定処理。メインプレーンクリックでとりあえず再度トラッキング開始。
+            else if hitNode?.node.name == "no1InfoPlane" ||
+                hitNode?.node.name == "no2InfoPlane" ||
+                hitNode?.node.name == "no3InfoPlane" ||
+                hitNode?.node.name == "no4InfoPlane" ||
+                hitNode?.node.name == "no5InfoPlane"
+            {
+                configureARImageTracking()
+            }
         }
         //ボタン押下をトリガーに一旦セッションを削除
         //これで再度画像検索およびレンダリング処理が実行される
@@ -102,7 +127,7 @@ class ViewController: UIViewController {
     let videoPlayer:AVPlayer = {
         //  let url = URL(string: "https://youtu.be/_D2_lTmG-6w")
         //動画パスベタ打ちなので要修正
-        guard let url = Bundle.main.url(forResource:"sadoya",withExtension:"mp4",subdirectory:"art.scnassets")
+        guard let url = Bundle.main.url(forResource:"koubonoAwa",withExtension:"mp4",subdirectory:"art.scnassets")
             else {
                 print("Could not find vide files")
                 return AVPlayer()
@@ -122,6 +147,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         shopUrl = URL(string: "http://sadoya-wine.com/fs/sadoya/red_wine/KT1675R")
+        labelName = ""
         
         shopButtonScene = SCNScene(named: "art.scnassets/shop_button.scn")!
         //各種ボタンノードへシーンファイルからオブジェクトを読み込み
@@ -209,7 +235,6 @@ class ViewController: UIViewController {
         
         //初期表示には情報ノードを設定
         mainPlaneNode = infoPlaneNode
-        
         /*
          //Webページ生成
          webView.scalesPageToFit = true
@@ -271,18 +296,15 @@ extension ViewController: ARSCNViewDelegate {
     
     //初期レンダリング処理
     //イメージを認識したときに実行される
+    //これは一度認識した画像の場合、実行されない。新規画像を認識する都度実行される。
     func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
-        print("didAdd")
-        /// Casting down ARAnchor to `ARImageAnchor`.
-        // ここでは情報を付与するロジックを追加
-        // SpriteKit（２Dを扱う）とSceneKit(3Dを扱う）を利用。紛らわしい。
         //ここのイメージアンカーにはアセットカタログに配置した参照イメージのプロパティが含まれている
         imageAnchor =  anchor as? ARImageAnchor
         if  imageAnchor ==  anchor as? ARImageAnchor {
             //イメージサイズをリファレンスイメージのフィジカルサイズから取得
             //  let imageSize = imageAnchor.referenceImage.physicalSize
             //認識したラベルによってInfoPlaneのテクスチャを切り替える
-            let labelName:String = imageAnchor.referenceImage.name!
+            labelName = imageAnchor.referenceImage.name!
             if labelName == "koubonoawa_label"{
                 mainPlaneNode = no1InfoPlaneNode
             }

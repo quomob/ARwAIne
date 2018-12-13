@@ -20,6 +20,7 @@
 		892A250821C222AB001A49C4 /* kuraonooto_label.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 892A250621C222AB001A49C4 /* kuraonooto_label.jpg */; };
 		892A250921C222AB001A49C4 /* italico_label.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 892A250721C222AB001A49C4 /* italico_label.jpg */; };
 		892A250B21C225CD001A49C4 /* pipa_label.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 892A250A21C225CD001A49C4 /* pipa_label.jpg */; };
+		892A250F21C24216001A49C4 /* koubonoawa_label.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 892A250E21C24216001A49C4 /* koubonoawa_label.jpg */; };
 		89639C7C219CF55500A34597 /* sadoya_logo_120.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 89639C7B219CF55500A34597 /* sadoya_logo_120.jpg */; };
 		89639C84219CF64B00A34597 /* sadoya_logo_1024.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 89639C80219CF64A00A34597 /* sadoya_logo_1024.jpg */; };
 		89639C88219CF67D00A34597 /* koutetsu100_label.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 89639C87219CF67D00A34597 /* koutetsu100_label.jpg */; };
@@ -68,6 +69,8 @@
 		892A250721C222AB001A49C4 /* italico_label.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = italico_label.jpg; sourceTree = "<group>"; };
 		892A250A21C225CD001A49C4 /* pipa_label.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = pipa_label.jpg; sourceTree = "<group>"; };
 		892A250C21C225D4001A49C4 /* pipa.HEIC */ = {isa = PBXFileReference; lastKnownFileType = file; path = pipa.HEIC; sourceTree = "<group>"; };
+		892A250D21C240F5001A49C4 /* koubonoawa.HEIC */ = {isa = PBXFileReference; lastKnownFileType = file; path = koubonoawa.HEIC; sourceTree = "<group>"; };
+		892A250E21C24216001A49C4 /* koubonoawa_label.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = koubonoawa_label.jpg; sourceTree = "<group>"; };
 		89639C7B219CF55500A34597 /* sadoya_logo_120.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sadoya_logo_120.jpg; sourceTree = "<group>"; };
 		89639C80219CF64A00A34597 /* sadoya_logo_1024.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sadoya_logo_1024.jpg; sourceTree = "<group>"; };
 		89639C87219CF67D00A34597 /* koutetsu100_label.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = koutetsu100_label.jpg; sourceTree = "<group>"; };
@@ -170,9 +173,11 @@
 				892A250421C222A3001A49C4 /* italico.HEIC */,
 				892A250A21C225CD001A49C4 /* pipa_label.jpg */,
 				892A250521C222A3001A49C4 /* kuraonooto.HEIC */,
+				892A250D21C240F5001A49C4 /* koubonoawa.HEIC */,
 				892A250C21C225D4001A49C4 /* pipa.HEIC */,
 				89D76AD02138BB0100DB6C43 /* sakeinfo.png */,
 				89639C87219CF67D00A34597 /* koutetsu100_label.jpg */,
+				892A250E21C24216001A49C4 /* koubonoawa_label.jpg */,
 				8915297521A66D11008B8EF0 /* chateauBrillantMur_white_Label.jpg */,
 				8915297721A66D20008B8EF0 /* chateauBrillantMur_white.jpg */,
 				89639C7B219CF55500A34597 /* sadoya_logo_120.jpg */,
@@ -282,6 +287,7 @@
 				89639C8A219CFC6F00A34597 /* ios-icons in Resources */,
 				89E602C4219A8FCF00B40BD5 /* if_play_1055007.png in Resources */,
 				89E602C3219A8FCF00B40BD5 /* if_clipboard_1055091.png in Resources */,
+				892A250F21C24216001A49C4 /* koubonoawa_label.jpg in Resources */,
 				89BF0F6321C0F20500D46182 /* ArWineNo4_Itarico.jpeg in Resources */,
 				89BF0F6221C0F20500D46182 /* ArWineNo7_PIPA.jpeg in Resources */,
 				89EF6E3B219A87600023EEEA /* sadoya_logo_icon2.jpg in Resources */,
