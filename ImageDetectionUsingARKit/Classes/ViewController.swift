@@ -19,13 +19,19 @@ class ViewController: UIViewController {
     
     //変数定義
     var imageAnchor: ARImageAnchor!
+    
     var shopButtonScene: SCNScene!
+    //各種ボタン用ノード
     var shopButtonNode: SCNNode!
     var movieButtonNode: SCNNode!
+    var scanButtonNode: SCNNode!
     var infoButtonNode: SCNNode!
+    //各種プレーンノード
     var infoPlaneNode: SCNNode!
     var moviePlaneNode: SCNNode!
     var mainPlaneNode: SCNNode!
+    var shopUrl: URL!
+    var movieUrl: URL!
     
     //オブジェクトがタッチされた時の処理
     @IBAction func tap(_ sender: UITapGestureRecognizer) {
@@ -52,8 +58,8 @@ class ViewController: UIViewController {
             if hitNode?.node.name == "shopButton"
             {
                 self.videoPlayer.pause()
-                let url = URL(string: "http://sadoya-wine.com/fs/sadoya/red_wine/KT1675R")
-                UIApplication.shared.open(url!)
+                shopUrl = URL(string: "http://sadoya-wine.com/fs/sadoya/red_wine/KT1675R")
+                UIApplication.shared.open(shopUrl!)
             }
             //ムービーボタンが押下された場合ムービーを再生
             //メインプレーンをムービープレーンに変更
@@ -70,6 +76,12 @@ class ViewController: UIViewController {
                 self.videoPlayer.pause()
                 mainPlaneNode.removeFromParentNode()
                 mainPlaneNode = infoPlaneNode
+            }
+            //scanボタンが押下された場合ムービーを一時停止
+            //基本的にはセッションをリムーブするのが目的
+            else if hitNode?.node.name == "scanButton"
+            {
+                self.videoPlayer.pause()
             }
         }
          //ボタン押下をトリガーに一旦セッションを削除
@@ -100,6 +112,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         shopButtonScene = SCNScene(named: "art.scnassets/shop_button.scn")!
+        
         
         shopButtonNode = shopButtonScene.rootNode.childNode(withName: "shopButton",recursively: true)
         shopButtonNode?.name = "shopButton"
