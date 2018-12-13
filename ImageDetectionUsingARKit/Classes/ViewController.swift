@@ -20,6 +20,7 @@ class ViewController: UIViewController {
     var imageAnchor: ARImageAnchor!
     var labelName:String!
     var shopButtonScene: SCNScene!
+    var hitNodeName:String!
     //各種ボタン用ノード
     var shopButtonNode: SCNNode!
     var movieButtonNode: SCNNode!
@@ -39,7 +40,8 @@ class ViewController: UIViewController {
     var no4MoviePlaneNnode: SCNNode!
     //各種URL
     var shopUrl: URL!
-    //var movieUrl: URL!
+    var movieUrl: URL!
+    var moviePlayerItem: AVPlayerItem!
     
     //オブジェクトがタッチされた時の処理
     @IBAction func tap(_ sender: UITapGestureRecognizer) {
@@ -54,6 +56,7 @@ class ViewController: UIViewController {
         // let node = sceneView.scene.rootNode
         if !hitResults.isEmpty{
             let hitNode = hitResults.first
+            
             print("hitnode is " + (hitNode?.node.name)!)
             //ボタンが押されたらアクションを実行
             //ボタンを一瞬大きくして元のサイズに戻す
@@ -63,6 +66,8 @@ class ViewController: UIViewController {
                     buttonAction2
                     ])
             )
+            
+            hitNodeName = hitNode?.node.name
             //ショップボタンがこされた場合Safariを起動しオンラインショッピングのサイトへ遷移
             if hitNode?.node.name == "shopButton"
             {
@@ -89,7 +94,8 @@ class ViewController: UIViewController {
                 //メインプレーンをムービープレーンに変更
             else if hitNode?.node.name == "movieButton"
             {
-                self.videoPlayer.play()
+                //self.videoPlayer.replaceCurrentItem(with: moviePlayerItem)
+                //self.videoPlayer.play()
                 mainPlaneNode.removeFromParentNode()
                 mainPlaneNode = moviePlaneNode
             }
@@ -132,6 +138,7 @@ class ViewController: UIViewController {
                 print("Could not find vide files")
                 return AVPlayer()
         }
+        print("videoPlayer")
         return AVPlayer(url: url)
     }()
     
@@ -307,18 +314,35 @@ extension ViewController: ARSCNViewDelegate {
             labelName = imageAnchor.referenceImage.name!
             if labelName == "koubonoawa_label"{
                 mainPlaneNode = no1InfoPlaneNode
+                movieUrl = Bundle.main.url(forResource:"koubonoAwa",withExtension:"mp4",subdirectory:"art.scnassets")
             }
             else if labelName == "kuraonooto_label"{
                 mainPlaneNode = no2InfoPlaneNode
+                movieUrl = nil
             }
             else if labelName == "italico_label"{
                 mainPlaneNode = no3InfoPlaneNode
+                movieUrl = Bundle.main.url(forResource:"suntory",withExtension:"mp4",subdirectory:"art.scnassets")
             }
             else if labelName == "chateauBrillantMur_white_Label" {
                 mainPlaneNode = no4InfoPlaneNode
+                movieUrl = Bundle.main.url(forResource:"sadoya",withExtension:"mp4",subdirectory:"art.scnassets")
             }
             else if labelName == "pipa_label"{
                 mainPlaneNode = no5InfoPlaneNode
+                movieUrl = nil
+            }
+            //movieボタンが押下された場合はmovieプレーンを設定
+            if hitNodeName == "movieButton"
+            {
+                
+                /*
+                let asset = AVURLAsset(url: movieUrl)
+                moviePlayerItem = AVPlayerItem(asset: asset)
+                self.videoPlayer.replaceCurrentItem(with: moviePlayerItem)
+ */
+                self.videoPlayer.play()
+                mainPlaneNode = moviePlaneNode
             }
             
             node.addChildNode(mainPlaneNode!)
