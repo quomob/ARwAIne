@@ -280,8 +280,10 @@ extension ViewController: ARSCNViewDelegate {
             //  let imageSize = imageAnchor.referenceImage.physicalSize
             //認識したラベルによってInfoPlaneのテクスチャを切り替える
             let labelName:String = imageAnchor.referenceImage.name!
-            
-            if labelName == "kuraonooto_label"{
+            if labelName == "koubonoawa_label"{
+                mainPlaneNode = no1InfoPlaneNode
+            }
+            else if labelName == "kuraonooto_label"{
                 mainPlaneNode = no2InfoPlaneNode
             }
             else if labelName == "italico_label"{
