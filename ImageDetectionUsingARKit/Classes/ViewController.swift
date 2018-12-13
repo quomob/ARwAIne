@@ -216,6 +216,7 @@ class ViewController: UIViewController {
          webView.loadRequest(request)
          */
         prepareUI()
+        print("viewdidload")
     }
     
     override func viewWillAppear(_ animated: Bool) {
