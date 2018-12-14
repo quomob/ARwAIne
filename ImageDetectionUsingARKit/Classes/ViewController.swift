@@ -40,8 +40,9 @@ class ViewController: UIViewController {
     var no4MoviePlaneNnode: SCNNode!
     //各種URL
     var shopUrl: URL!
-    var movieUrl: URL!
+   // var movieUrl: URL!
     var moviePlayerItem: AVPlayerItem!
+    var moviePlayer: AVPlayer!
     
     //オブジェクトがタッチされた時の処理
     @IBAction func tap(_ sender: UITapGestureRecognizer) {
@@ -70,7 +71,7 @@ class ViewController: UIViewController {
                         ])
                 )
                 
-                self.videoPlayer.pause()
+                moviePlayer.pause()
                 shopUrl = URL(string: "")
                 if labelName == "koubonoawa_label"{
                     shopUrl = URL(string: "https://mannswine-shop.com/SHOP/561539.html?_ga=2.38526307.1333330064.1544686411-109063759.1544686411")
@@ -101,6 +102,7 @@ class ViewController: UIViewController {
                 )
                 //self.videoPlayer.replaceCurrentItem(with: moviePlayerItem)
                 //self.videoPlayer.play()
+                moviePlayer.play()
                 mainPlaneNode.removeFromParentNode()
                 mainPlaneNode = moviePlaneNode
             }
@@ -114,7 +116,7 @@ class ViewController: UIViewController {
                         buttonAction2
                         ])
                 )
-                self.videoPlayer.pause()
+                moviePlayer.pause()
                 mainPlaneNode.removeFromParentNode()
                 mainPlaneNode = infoPlaneNode
             }
@@ -128,14 +130,15 @@ class ViewController: UIViewController {
                         buttonAction2
                         ])
                 )
-                self.videoPlayer.pause()
+                moviePlayer.pause()
             }
             //暫定処理。メインプレーンクリックでとりあえず再度トラッキング開始。
             else if hitNode?.node.name == "no1InfoPlane" ||
                 hitNode?.node.name == "no2InfoPlane" ||
                 hitNode?.node.name == "no3InfoPlane" ||
                 hitNode?.node.name == "no4InfoPlane" ||
-                hitNode?.node.name == "no5InfoPlane"
+                hitNode?.node.name == "no5InfoPlane" ||
+                hitNode?.node.name == "moviePlane"
             {
                 //mainPlaneNode.removeFromParentNode()
                 configureARImageTracking()
@@ -148,6 +151,7 @@ class ViewController: UIViewController {
     }
     
     //動画プレイヤー定義
+    /*
     let videoPlayer:AVPlayer = {
         //  let url = URL(string: "https://youtu.be/_D2_lTmG-6w")
         //動画パスベタ打ちなので要修正
@@ -159,6 +163,7 @@ class ViewController: UIViewController {
         print("videoPlayer")
         return AVPlayer(url: url)
     }()
+ */
     
     /*
      //Web画面定義
@@ -197,15 +202,18 @@ class ViewController: UIViewController {
         no4InfoPlaneNode?.name = "no4InfoPlane"
         no5InfoPlaneNode = shopButtonScene.rootNode.childNode(withName: "no7InfoPlane", recursively: true)
         no5InfoPlaneNode?.name = "no5InfoPlane"
-        
+        /*
         let moviePlane = SCNPlane(width: CGFloat(0.12), height: CGFloat(0.07))
         //テスクチャーとしてMovieシーンを設定
-        moviePlane.firstMaterial?.diffuse.contents = self.videoPlayer
+        
+        moviePlane.firstMaterial?.diffuse.contents = moviePlayer
         //テクスチャーのサイズ調整
         moviePlane.firstMaterial?.diffuse.contentsTransform = SCNMatrix4Translate(SCNMatrix4MakeScale(1, -1, 1), 0, 1, 0)
+        
         //Movie用ノード生成
         moviePlaneNode = SCNNode(geometry: moviePlane)
         moviePlaneNode?.name = "moviePlane"
+        */
         
         //trueにすると表面のみ表示する
         scanButtonNode!.geometry?.firstMaterial?.isDoubleSided = true
@@ -214,7 +222,7 @@ class ViewController: UIViewController {
         infoButtonNode!.geometry?.firstMaterial?.isDoubleSided = true
         
         infoPlaneNode!.geometry?.firstMaterial?.isDoubleSided = true
-        moviePlaneNode!.geometry?.firstMaterial?.isDoubleSided = true
+        //moviePlaneNode!.geometry?.firstMaterial?.isDoubleSided = true
         no1InfoPlaneNode!.geometry?.firstMaterial?.isDoubleSided = true
         no2InfoPlaneNode!.geometry?.firstMaterial?.isDoubleSided = true
         no3InfoPlaneNode!.geometry?.firstMaterial?.isDoubleSided = true
@@ -232,7 +240,7 @@ class ViewController: UIViewController {
         no4InfoPlaneNode!.eulerAngles.x = -.pi / 2
         no5InfoPlaneNode!.eulerAngles.x = -.pi / 2
         //なぜかMovieだけ逆回転。なぜか。
-        moviePlaneNode!.eulerAngles.x = .pi / 2
+        //moviePlaneNode!.eulerAngles.x = .pi / 2
         //各種オブジェクトの座標設定
         scanButtonNode!.position = SCNVector3(-0.045, 0, 0.055)
         infoButtonNode!.position = SCNVector3(-0.015, 0, 0.055)
@@ -244,7 +252,7 @@ class ViewController: UIViewController {
         no3InfoPlaneNode!.position = SCNVector3Zero
         no4InfoPlaneNode!.position = SCNVector3Zero
         no5InfoPlaneNode!.position = SCNVector3Zero
-        moviePlaneNode!.position = SCNVector3Zero
+        //moviePlaneNode!.position = SCNVector3Zero
         //気持ち透明にしてみる
         shopButtonNode!.opacity = 0.9
         shopButtonNode!.opacity = 0.9
@@ -256,7 +264,7 @@ class ViewController: UIViewController {
         no3InfoPlaneNode!.opacity = 0.9
         no4InfoPlaneNode!.opacity = 0.9
         no5InfoPlaneNode!.opacity = 0.9
-        moviePlaneNode!.opacity = 0.9
+        
         
         //初期表示には情報ノードを設定
         mainPlaneNode = infoPlaneNode
@@ -330,30 +338,63 @@ extension ViewController: ARSCNViewDelegate {
             //  let imageSize = imageAnchor.referenceImage.physicalSize
             //認識したラベルによってInfoPlaneのテクスチャを切り替える
             labelName = imageAnchor.referenceImage.name!
+             let moviePlane = SCNPlane(width: CGFloat(0.12), height: CGFloat(0.07))
+            //テスクチャーとしてMovieシーンを設定
+            moviePlane.firstMaterial?.diffuse.contents = moviePlayer
+            //テクスチャーのサイズ調整
+            moviePlane.firstMaterial?.diffuse.contentsTransform = SCNMatrix4Translate(SCNMatrix4MakeScale(1, -1, 1), 0, 1, 0)
+            //Movie用ノード生成
+            moviePlaneNode = SCNNode(geometry: moviePlane)
+            moviePlaneNode.name = "moviePlane"
+            moviePlaneNode!.geometry?.firstMaterial?.isDoubleSided = true
+            moviePlaneNode!.eulerAngles.x = .pi / 2
+            moviePlaneNode!.position = SCNVector3Zero
+            moviePlaneNode!.opacity = 0.9
+            
             if labelName == "koubonoawa_label"{
                 mainPlaneNode = no1InfoPlaneNode
-                movieUrl = Bundle.main.url(forResource:"koubonoAwa",withExtension:"mp4",subdirectory:"art.scnassets")
+                guard let movieUrl = Bundle.main.url(forResource:"koubonoAwa",withExtension:"mp4",subdirectory:"art.scnassets") else {
+                    debugPrint("video not found")
+                    return
+                }
+                moviePlayer = AVPlayer(url: movieUrl)
             }
             else if labelName == "kuraonooto_label"{
                 mainPlaneNode = no2InfoPlaneNode
-                movieUrl = nil
+                guard let movieUrl = Bundle.main.url(forResource:"koubonoAwa",withExtension:"mp4",subdirectory:"art.scnassets") else {
+                    debugPrint("video not found")
+                    return
+                }
+                moviePlayer = AVPlayer(url: movieUrl)
             }
             else if labelName == "italico_label"{
                 mainPlaneNode = no3InfoPlaneNode
-                movieUrl = Bundle.main.url(forResource:"suntory",withExtension:"mp4",subdirectory:"art.scnassets")
+                guard let movieUrl = Bundle.main.url(forResource:"suntory",withExtension:"mp4",subdirectory:"art.scnassets") else {
+                    debugPrint("video not found")
+                    return
+                }
+                moviePlayer = AVPlayer(url: movieUrl)
             }
             else if labelName == "chateauBrillantMur_white_Label" {
                 mainPlaneNode = no4InfoPlaneNode
-                movieUrl = Bundle.main.url(forResource:"sadoya",withExtension:"mp4",subdirectory:"art.scnassets")
+                guard let movieUrl = Bundle.main.url(forResource:"sadoya",withExtension:"mp4",subdirectory:"art.scnassets") else {
+                    debugPrint("video not found")
+                    return
+                }
+                moviePlayer = AVPlayer(url: movieUrl)
             }
             else if labelName == "pipa_label"{
                 mainPlaneNode = no5InfoPlaneNode
-                movieUrl = nil
+                guard let movieUrl = Bundle.main.url(forResource:"koubonoAwa",withExtension:"mp4",subdirectory:"art.scnassets") else {
+                    debugPrint("video not found")
+                    return
+                }
+                moviePlayer = AVPlayer(url: movieUrl)
             }
             //movieボタンが押下された場合はmovieプレーンを設定
             if hitNodeName == "movieButton"
             {
-                self.videoPlayer.play()
+                moviePlayer.play()
                 mainPlaneNode = moviePlaneNode
             }
             
