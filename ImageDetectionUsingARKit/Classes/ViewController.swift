@@ -58,19 +58,18 @@ class ViewController: UIViewController {
             let hitNode = hitResults.first
             
             print("hitnode is " + (hitNode?.node.name)!)
-            //ボタンが押されたらアクションを実行
-            //ボタンを一瞬大きくして元のサイズに戻す
-            hitNode?.node.runAction(
-                SCNAction.group([
-                    buttonAction1,
-                    buttonAction2
-                    ])
-            )
             
             hitNodeName = hitNode?.node.name
             //ショップボタンがこされた場合Safariを起動しオンラインショッピングのサイトへ遷移
             if hitNode?.node.name == "shopButton"
             {
+                hitNode?.node.runAction(
+                    SCNAction.group([
+                        buttonAction1,
+                        buttonAction2
+                        ])
+                )
+                
                 self.videoPlayer.pause()
                 shopUrl = URL(string: "")
                 if labelName == "koubonoawa_label"{
@@ -94,6 +93,12 @@ class ViewController: UIViewController {
                 //メインプレーンをムービープレーンに変更
             else if hitNode?.node.name == "movieButton"
             {
+                hitNode?.node.runAction(
+                    SCNAction.group([
+                        buttonAction1,
+                        buttonAction2
+                        ])
+                )
                 //self.videoPlayer.replaceCurrentItem(with: moviePlayerItem)
                 //self.videoPlayer.play()
                 mainPlaneNode.removeFromParentNode()
@@ -103,6 +108,12 @@ class ViewController: UIViewController {
                 //メインプレーンをInfoプレーンに変更
             else if hitNode?.node.name == "infoButton"
             {
+                hitNode?.node.runAction(
+                    SCNAction.group([
+                        buttonAction1,
+                        buttonAction2
+                        ])
+                )
                 self.videoPlayer.pause()
                 mainPlaneNode.removeFromParentNode()
                 mainPlaneNode = infoPlaneNode
@@ -111,6 +122,12 @@ class ViewController: UIViewController {
                 //基本的にはセッションをリムーブするのが目的
             else if hitNode?.node.name == "scanButton"
             {
+                hitNode?.node.runAction(
+                    SCNAction.group([
+                        buttonAction1,
+                        buttonAction2
+                        ])
+                )
                 self.videoPlayer.pause()
             }
             //暫定処理。メインプレーンクリックでとりあえず再度トラッキング開始。
@@ -120,6 +137,7 @@ class ViewController: UIViewController {
                 hitNode?.node.name == "no4InfoPlane" ||
                 hitNode?.node.name == "no5InfoPlane"
             {
+                //mainPlaneNode.removeFromParentNode()
                 configureARImageTracking()
             }
         }
@@ -335,12 +353,6 @@ extension ViewController: ARSCNViewDelegate {
             //movieボタンが押下された場合はmovieプレーンを設定
             if hitNodeName == "movieButton"
             {
-                
-                /*
-                let asset = AVURLAsset(url: movieUrl)
-                moviePlayerItem = AVPlayerItem(asset: asset)
-                self.videoPlayer.replaceCurrentItem(with: moviePlayerItem)
- */
                 self.videoPlayer.play()
                 mainPlaneNode = moviePlaneNode
             }
