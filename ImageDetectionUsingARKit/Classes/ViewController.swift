@@ -143,10 +143,10 @@ class ViewController: UIViewController {
                 //mainPlaneNode.removeFromParentNode()
                 configureARImageTracking()
             }
+            //ボタン押下をトリガーに一旦セッションを削除
+            //これで再度画像検索およびレンダリング処理が実行される
+            sceneView.session.remove(anchor: imageAnchor)
         }
-        //ボタン押下をトリガーに一旦セッションを削除
-        //これで再度画像検索およびレンダリング処理が実行される
-        sceneView.session.remove(anchor: imageAnchor)
         print("tap")
     }
     

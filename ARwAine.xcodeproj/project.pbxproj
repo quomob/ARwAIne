@@ -30,16 +30,16 @@
 		89639C7C219CF55500A34597 /* sadoya_logo_120.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 89639C7B219CF55500A34597 /* sadoya_logo_120.jpg */; };
 		89639C84219CF64B00A34597 /* sadoya_logo_1024.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 89639C80219CF64A00A34597 /* sadoya_logo_1024.jpg */; };
 		89639C8A219CFC6F00A34597 /* ios-icons in Resources */ = {isa = PBXBuildFile; fileRef = 89639C89219CFC6F00A34597 /* ios-icons */; };
+		896D90A021D59CA7004C0040 /* ArWineNo5_Mur.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 896D909B21D59CA5004C0040 /* ArWineNo5_Mur.jpeg */; };
+		896D90A121D59CA7004C0040 /* ArWineNo2_Kuranooto.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 896D909C21D59CA6004C0040 /* ArWineNo2_Kuranooto.jpeg */; };
+		896D90A221D59CA7004C0040 /* ArWineNo7_PIPA.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 896D909D21D59CA6004C0040 /* ArWineNo7_PIPA.jpeg */; };
+		896D90A321D59CA7004C0040 /* ArWineNo4_Itarico.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 896D909E21D59CA6004C0040 /* ArWineNo4_Itarico.jpeg */; };
+		896D90A421D59CA7004C0040 /* ArWineNo1_Koubo.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 896D909F21D59CA7004C0040 /* ArWineNo1_Koubo.jpeg */; };
 		89705126219B9F4F00D502EA /* splash_sadoya.png in Resources */ = {isa = PBXBuildFile; fileRef = 89705125219B9F4F00D502EA /* splash_sadoya.png */; };
 		89705128219B9FBA00D502EA /* splash_sadoya_landscape.png in Resources */ = {isa = PBXBuildFile; fileRef = 89705127219B9FBA00D502EA /* splash_sadoya_landscape.png */; };
 		897100E9217880EB00A0BC84 /* wineInfo01.png in Resources */ = {isa = PBXBuildFile; fileRef = 897100E7217880EB00A0BC84 /* wineInfo01.png */; };
 		897100EA217880EB00A0BC84 /* wineInfo02.png in Resources */ = {isa = PBXBuildFile; fileRef = 897100E8217880EB00A0BC84 /* wineInfo02.png */; };
 		89AB921C21797012009B454A /* About.sks in Resources */ = {isa = PBXBuildFile; fileRef = 89AB921B21797012009B454A /* About.sks */; };
-		89BF0F6221C0F20500D46182 /* ArWineNo7_PIPA.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 89BF0F5D21C0F20500D46182 /* ArWineNo7_PIPA.jpeg */; };
-		89BF0F6321C0F20500D46182 /* ArWineNo4_Itarico.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 89BF0F5E21C0F20500D46182 /* ArWineNo4_Itarico.jpeg */; };
-		89BF0F6421C0F20500D46182 /* ArWineNo5_Mur.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 89BF0F5F21C0F20500D46182 /* ArWineNo5_Mur.jpeg */; };
-		89BF0F6521C0F20500D46182 /* ArWineNo2_Kuranooto.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 89BF0F6021C0F20500D46182 /* ArWineNo2_Kuranooto.jpeg */; };
-		89BF0F6621C0F20500D46182 /* ArWineNo1_Koubo.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 89BF0F6121C0F20500D46182 /* ArWineNo1_Koubo.jpeg */; };
 		89C20AD5217D9977002BF883 /* Movie.sks in Resources */ = {isa = PBXBuildFile; fileRef = 89C20AD4217D9977002BF883 /* Movie.sks */; };
 		89C20AD7217D998D002BF883 /* wineLabel.sks in Resources */ = {isa = PBXBuildFile; fileRef = 89C20AD6217D998D002BF883 /* wineLabel.sks */; };
 		89D76ACD2138B64000DB6C43 /* saketime.png in Resources */ = {isa = PBXBuildFile; fileRef = 89D76ACC2138B64000DB6C43 /* saketime.png */; };
@@ -81,16 +81,16 @@
 		89639C7B219CF55500A34597 /* sadoya_logo_120.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sadoya_logo_120.jpg; sourceTree = "<group>"; };
 		89639C80219CF64A00A34597 /* sadoya_logo_1024.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sadoya_logo_1024.jpg; sourceTree = "<group>"; };
 		89639C89219CFC6F00A34597 /* ios-icons */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "ios-icons"; sourceTree = "<group>"; };
+		896D909B21D59CA5004C0040 /* ArWineNo5_Mur.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = ArWineNo5_Mur.jpeg; path = ../../../ARwineVUI/ARwineVUI/art.scnassets/ArWineNo5_Mur.jpeg; sourceTree = "<group>"; };
+		896D909C21D59CA6004C0040 /* ArWineNo2_Kuranooto.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = ArWineNo2_Kuranooto.jpeg; path = ../../../ARwineVUI/ARwineVUI/art.scnassets/ArWineNo2_Kuranooto.jpeg; sourceTree = "<group>"; };
+		896D909D21D59CA6004C0040 /* ArWineNo7_PIPA.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = ArWineNo7_PIPA.jpeg; path = ../../../ARwineVUI/ARwineVUI/art.scnassets/ArWineNo7_PIPA.jpeg; sourceTree = "<group>"; };
+		896D909E21D59CA6004C0040 /* ArWineNo4_Itarico.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = ArWineNo4_Itarico.jpeg; path = ../../../ARwineVUI/ARwineVUI/art.scnassets/ArWineNo4_Itarico.jpeg; sourceTree = "<group>"; };
+		896D909F21D59CA7004C0040 /* ArWineNo1_Koubo.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = ArWineNo1_Koubo.jpeg; path = ../../../ARwineVUI/ARwineVUI/art.scnassets/ArWineNo1_Koubo.jpeg; sourceTree = "<group>"; };
 		89705125219B9F4F00D502EA /* splash_sadoya.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splash_sadoya.png; sourceTree = "<group>"; };
 		89705127219B9FBA00D502EA /* splash_sadoya_landscape.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splash_sadoya_landscape.png; sourceTree = "<group>"; };
 		897100E7217880EB00A0BC84 /* wineInfo01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wineInfo01.png; sourceTree = "<group>"; };
 		897100E8217880EB00A0BC84 /* wineInfo02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wineInfo02.png; sourceTree = "<group>"; };
 		89AB921B21797012009B454A /* About.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = About.sks; sourceTree = "<group>"; };
-		89BF0F5D21C0F20500D46182 /* ArWineNo7_PIPA.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ArWineNo7_PIPA.jpeg; sourceTree = "<group>"; };
-		89BF0F5E21C0F20500D46182 /* ArWineNo4_Itarico.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ArWineNo4_Itarico.jpeg; sourceTree = "<group>"; };
-		89BF0F5F21C0F20500D46182 /* ArWineNo5_Mur.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ArWineNo5_Mur.jpeg; sourceTree = "<group>"; };
-		89BF0F6021C0F20500D46182 /* ArWineNo2_Kuranooto.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ArWineNo2_Kuranooto.jpeg; sourceTree = "<group>"; };
-		89BF0F6121C0F20500D46182 /* ArWineNo1_Koubo.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ArWineNo1_Koubo.jpeg; sourceTree = "<group>"; };
 		89C20AD4217D9977002BF883 /* Movie.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Movie.sks; sourceTree = "<group>"; };
 		89C20AD6217D998D002BF883 /* wineLabel.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = wineLabel.sks; sourceTree = "<group>"; };
 		89D76ACC2138B64000DB6C43 /* saketime.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = saketime.png; sourceTree = "<group>"; };
@@ -165,8 +165,6 @@
 				89E602BB219A8FCE00B40BD5 /* if_video_1054941.png */,
 				89EF6E38219A87210023EEEA /* sadoya_logo_icon.jpeg */,
 				89EF6E3A219A87600023EEEA /* sadoya_logo_icon2.jpg */,
-				89BF0F6121C0F20500D46182 /* ArWineNo1_Koubo.jpeg */,
-				89BF0F6021C0F20500D46182 /* ArWineNo2_Kuranooto.jpeg */,
 				89039BEB21C32AE10094FACB /* 1055056 - focus.png */,
 				89039BE921C32AE10094FACB /* italico_label.jpg */,
 				89039BF021C32AE10094FACB /* italico.HEIC */,
@@ -178,9 +176,11 @@
 				89039BEC21C32AE10094FACB /* kuraonooto.HEIC */,
 				89039BE721C32AE10094FACB /* pipa_label.jpg */,
 				89039BEE21C32AE10094FACB /* pipa.HEIC */,
-				89BF0F5E21C0F20500D46182 /* ArWineNo4_Itarico.jpeg */,
-				89BF0F5F21C0F20500D46182 /* ArWineNo5_Mur.jpeg */,
-				89BF0F5D21C0F20500D46182 /* ArWineNo7_PIPA.jpeg */,
+				896D909F21D59CA7004C0040 /* ArWineNo1_Koubo.jpeg */,
+				896D909C21D59CA6004C0040 /* ArWineNo2_Kuranooto.jpeg */,
+				896D909E21D59CA6004C0040 /* ArWineNo4_Itarico.jpeg */,
+				896D909B21D59CA5004C0040 /* ArWineNo5_Mur.jpeg */,
+				896D909D21D59CA6004C0040 /* ArWineNo7_PIPA.jpeg */,
 				89D76ACC2138B64000DB6C43 /* saketime.png */,
 				89D76AD22138BD6D00DB6C43 /* saketime2.png */,
 				890EEE91219EA9A000055A6D /* koutetsu100.jpg */,
@@ -277,9 +277,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				89BF0F6521C0F20500D46182 /* ArWineNo2_Kuranooto.jpeg in Resources */,
 				89EF6E39219A87210023EEEA /* sadoya_logo_icon.jpeg in Resources */,
 				8915297821A66D20008B8EF0 /* chateauBrillantMur_white.jpg in Resources */,
+				896D90A221D59CA7004C0040 /* ArWineNo7_PIPA.jpeg in Resources */,
+				896D90A421D59CA7004C0040 /* ArWineNo1_Koubo.jpeg in Resources */,
 				89C20AD5217D9977002BF883 /* Movie.sks in Resources */,
 				89E602C0219A8FCF00B40BD5 /* if_video_1054941.png in Resources */,
 				8915297621A66D11008B8EF0 /* chateauBrillantMur_white_Label.jpg in Resources */,
@@ -297,21 +298,20 @@
 				89639C8A219CFC6F00A34597 /* ios-icons in Resources */,
 				89E602C4219A8FCF00B40BD5 /* if_play_1055007.png in Resources */,
 				89E602C3219A8FCF00B40BD5 /* if_clipboard_1055091.png in Resources */,
-				89BF0F6321C0F20500D46182 /* ArWineNo4_Itarico.jpeg in Resources */,
-				89BF0F6221C0F20500D46182 /* ArWineNo7_PIPA.jpeg in Resources */,
 				89EF6E3B219A87600023EEEA /* sadoya_logo_icon2.jpg in Resources */,
-				89BF0F6421C0F20500D46182 /* ArWineNo5_Mur.jpeg in Resources */,
 				89039BFB21C32AE10094FACB /* italico.HEIC in Resources */,
 				897100E9217880EB00A0BC84 /* wineInfo01.png in Resources */,
+				896D90A321D59CA7004C0040 /* ArWineNo4_Itarico.jpeg in Resources */,
 				89039BFA21C32AE10094FACB /* kuraonooto_label.jpg in Resources */,
 				897100EA217880EB00A0BC84 /* wineInfo02.png in Resources */,
 				89039BF921C32AE10094FACB /* pipa.HEIC in Resources */,
-				89BF0F6621C0F20500D46182 /* ArWineNo1_Koubo.jpeg in Resources */,
+				896D90A021D59CA7004C0040 /* ArWineNo5_Mur.jpeg in Resources */,
 				890EEE92219EA9A000055A6D /* koutetsu100.jpg in Resources */,
 				89D76ACD2138B64000DB6C43 /* saketime.png in Resources */,
 				03469AD920E0C0A600A949BD /* LaunchScreen.storyboard in Resources */,
 				89D76AD12138BB0100DB6C43 /* sakeinfo.png in Resources */,
 				89705128219B9FBA00D502EA /* splash_sadoya_landscape.png in Resources */,
+				896D90A121D59CA7004C0040 /* ArWineNo2_Kuranooto.jpeg in Resources */,
 				89D76AD32138BD6D00DB6C43 /* saketime2.png in Resources */,
 				03469AD620E0C0A600A949BD /* Assets.xcassets in Resources */,
 				89639C7C219CF55500A34597 /* sadoya_logo_120.jpg in Resources */,

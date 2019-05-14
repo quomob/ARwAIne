@@ -2,7 +2,7 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "IMG_0849 2.jpg"
+      "filename" : "tomi_label.jpg"
     }
   ],
   "info" : {
@@ -10,7 +10,7 @@
     "author" : "xcode"
   },
   "properties" : {
-    "width" : 3.5,
+    "width" : 2,
     "unit" : "centimeters"
   }
 }

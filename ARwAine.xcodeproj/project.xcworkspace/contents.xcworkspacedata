@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:/Users/systemmac/Downloads/Image-Recognition-and-Tracking-Using-ARKit-2-master/ARwAine.xcodeproj">
+      location = "group:">
+   </FileRef>
+   <FileRef
+      location = "self:">
    </FileRef>
 </Workspace>
